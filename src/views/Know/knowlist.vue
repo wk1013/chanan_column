@@ -21,17 +21,9 @@
                 size="small"
                 placeholder="请输入内容"
                 v-model.trim="inputText"
-                class="input-with-select"
+                class="input-with-detail"
                 @keyup.13.native="search"
               >
-                <el-select
-                  v-model="select"
-                  disabled
-                  slot="prepend"
-                  size="small"
-                >
-                  <el-option label="知识" value="1"></el-option>
-                </el-select>
                 <svg
                   slot="suffix"
                   aria-hidden="true"
@@ -121,7 +113,6 @@ import { SearchKnowledge, DeleteKnow, DeleteNum } from "@/api/interface/home";
 export default {
   data() {
     return {
-      select: "1",
       inputText: "",
       currentPage: 1,
       total: 0,

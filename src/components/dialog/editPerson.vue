@@ -111,7 +111,7 @@ export default {
       this.title = val.title;
       this.introduce = val.introduce;
       this.id = val.sysId;
-      this.dynamicTags = val.themeName && val.themeName.split(",");
+      this.dynamicTags = val.themeName ? val.themeName.split(",") : [];
       this.department = val.createUserDepart;
       this.imageUrl = val.imgUrl;
     },

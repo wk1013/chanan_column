@@ -70,7 +70,7 @@
             <div class="select-body">
               <div
                 :class="[{ active: isPerson == index }, 'select-i']"
-                @click="PersonSearch(index)"
+                @click="PersonSearch(index, item.id)"
                 v-for="(item, index) in persons"
               >
                 {{ item.title
@@ -301,7 +301,7 @@ export default {
     },
 
     //人物查询
-    PersonSearch(index) {
+    PersonSearch(index, id) {
       if (this.isPerson == index) {
         return false;
       }

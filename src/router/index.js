@@ -9,6 +9,7 @@ const PersonDetail = () => import('@/views/Person/persondetail.vue');
 const KnowList = () => import('@/views/Know/knowlist.vue');
 const Column = () => import('@/views/Column/column.vue');
 const KnowUpload = () => import('@/views/Know/knowupload.vue');
+const UserColumn = () => import('@/views/User/userspecial.vue');
 
 Vue.use(VueRouter);
 
@@ -57,6 +58,11 @@ const routes = [
     path: '/column',
     name: 'column',
     component: Column
+  },
+  {
+    path: '/usercolumn',
+    name: 'usercolumn',
+    component: UserColumn
   }
 ];
 

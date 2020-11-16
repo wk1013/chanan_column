@@ -12,7 +12,7 @@
           :class="[{ active: isActive == 0 }, 'cb-item']"
           @click="ChangeTab(0)"
         >
-          专题专栏
+          主题专栏
         </div>
         <div
           :class="[{ active: isActive == 1 }, 'cb-item']"

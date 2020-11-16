@@ -11,7 +11,7 @@
               title
             }}</span></el-breadcrumb-item
           >
-          <el-breadcrumb-item>知识管理</el-breadcrumb-item>
+          <el-breadcrumb-item>知识上传</el-breadcrumb-item>
         </el-breadcrumb>
         <iframe
           ref="iframe"

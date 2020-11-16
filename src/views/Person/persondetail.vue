@@ -59,8 +59,12 @@
                 {{ seen ? "取消订阅" : "已订阅" }}
               </div>
             </div>
-            <p class="font-s14 color6" style="margin: 15px 0">
+
+            <p class="font-s14 color6" style="margin: 10px 0">
               简介：{{ detail.introduce }}
+            </p>
+            <p class="font-s14 color6" style="margin-bottom: 10px">
+              擅长领域：{{ detail.themeName }}
             </p>
             <div>
               <span class="special-span font-s12 color9"
