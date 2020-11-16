@@ -92,6 +92,7 @@
               <span @click="getEdit">编辑专栏</span>
               <span @click="addMember">权限变更</span>
               <span @click="getKnow(detail.title)">专栏文档管理</span>
+              <span @click="Delete">删除</span>
             </div>
           </div>
         </div>
@@ -162,6 +163,7 @@ import {
   getSubscribe,
   DeleteSubscribe,
   SearchKnowledge,
+  DeleteColumn,
 } from "@/api/interface/home";
 import Knowlist from "@/components/dialog/knowlist.vue";
 import EditPerson from "@/components/dialog/editPerson.vue";
@@ -351,6 +353,32 @@ export default {
           type: 1,
         },
       });
+    },
+
+    //删除专栏
+    Delete() {
+      this.$confirm("确定将该专栏删除?", "删除专栏", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning",
+      })
+        .then(() => {
+          DeleteColumn({
+            sysId: this.id,
+          })
+            .then((json) => {
+              if (json.success) {
+                this.$message.success("删除专栏成功");
+                this.$router.replace({ path: "/" });
+              } else {
+                this.$message.error(json.message);
+              }
+            })
+            .catch((json) => {
+              this.$message.error(json.message);
+            });
+        })
+        .catch(() => {});
     },
   },
 };

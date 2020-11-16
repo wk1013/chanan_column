@@ -81,8 +81,9 @@
                 上传知识
               </div>
               <span @click="getEdit">编辑专栏</span>
-              <span @click="addMember">权限变更</span>
+              <span @click="getPower">权限变更</span>
               <span @click="getKnow(detail.title)">专栏文档管理</span>
+              <span @click="Delete">删除</span>
             </div>
           </div>
         </div>
@@ -153,6 +154,8 @@ import {
   getSubscribe,
   DeleteSubscribe,
   SearchKnowledge,
+  DeleteColumn,
+  getUserList,
 } from "@/api/interface/home";
 import Knowlist from "@/components/dialog/knowlist.vue";
 import EditDetail from "@/components/dialog/editSpecial.vue";
@@ -342,6 +345,65 @@ export default {
         },
       });
     },
+
+    //删除专栏
+    Delete() {
+      this.$confirm("确定将该专栏删除?", "删除专栏", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning",
+      })
+        .then(() => {
+          DeleteColumn({
+            sysId: this.id,
+          })
+            .then((json) => {
+              if (json.success) {
+                this.$message.success("删除专栏成功");
+                this.$router.replace({ path: "/" });
+              } else {
+                this.$message.error(json.message);
+              }
+            })
+            .catch((json) => {
+              this.$message.error(json.message);
+            });
+        })
+        .catch(() => {});
+    },
+
+    //获取可访问专栏的人员
+    getPower() {
+      getUserList({
+        columnId: this.id,
+      })
+        .then((json) => {
+          console.log();
+          if (json.success) {
+            let data = [];
+            json.content.length > 0 &&
+              json.content.map((item) => {
+                data.push({
+                  logo: "",
+                  pId: "",
+                  realName: item.userName,
+                  type: 1,
+                  userId: item.userLoginId,
+                });
+              });
+          } else {
+            this.$message.error(json.message);
+          }
+        })
+        .catch((json) => {
+          this.$message.error(json.message);
+        });
+      // this.addMember();
+    },
+
+    // confirm(list) {
+    //   console.log(list);
+    // },
   },
 };
 </script>
