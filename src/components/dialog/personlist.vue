@@ -25,7 +25,7 @@
         ></h1>
         <div class="person-span">
           <span class="font-s16 color3" style="margin-right: 20px">{{
-            item.createUserDepart
+            item.CreateUserDepart
           }}</span>
           <div
             v-if="!item.isSub"
@@ -67,7 +67,9 @@
               >浏览{{ item.browseNum }}</span
             >
           </div>
-          <span class="font-s12 color9">更新{{ item.updateDate }}</span>
+          <span class="font-s12 color9"
+            >更新{{ showDate(item.updateDate) }}</span
+          >
         </div>
       </div>
     </div>
@@ -115,6 +117,11 @@ export default {
           '<font color="red">' + this.inputKey + "</font>"
         );
       }
+    },
+
+    //时间截取
+    showDate(date) {
+      return date.slice(0, 10);
     },
 
     //已订阅的专栏鼠标移入移出时的操作
