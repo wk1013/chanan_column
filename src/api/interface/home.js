@@ -27,6 +27,9 @@ export const SearchKnowledge = params => axios.post('/spe/search', params)
 //删除知识
 export const DeleteKnow = params => axios.delete('/spe/deleteKnowledge', { params })
 
+//增加知识数
+export const AddNum = params => axios.post('/sub/addNum', params)
+
 //减少知识数
 export const DeleteNum = params => axios.post('/sub/lessNum', params)
 
@@ -52,6 +55,7 @@ export default {
   DeleteColumn,
   SearchKnowledge,
   DeleteKnow,
+  AddNum,
   DeleteNum,
   getUserInfo,
   getPower,

@@ -328,7 +328,7 @@ export default {
       this.getKnowledge();
     },
 
-    //按时间或者热度排序
+    //按时间排序
     getHot() {
       this.isHot = !this.isHot;
       this.currentPage = 1;

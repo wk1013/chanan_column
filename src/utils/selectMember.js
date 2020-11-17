@@ -1,4 +1,6 @@
 import selectMemberApi from '@/api/interface/selectMemberApi.js'
+import { getUserList, getPower } from "@/api/interface/home";
+
 export default {
     data() {
         return {
@@ -18,21 +20,72 @@ export default {
             centerMembers: [],
             disabledList: [],
             curNode: null,
-            pageIndex: 1
+            pageIndex: 1,
+            id: ""
         }
     },
     methods: {
-        addMember() {
-            this.$refs.members.show();
+        addMember(id) {
+            this.id = id
+            getUserList({
+                columnId: id,
+            })
+                .then((json) => {
+                    if (json.success) {
+                        let data = [];
+                        json.content.length > 0 &&
+                            json.content.map((item) => {
+                                data.push({
+                                    logo: "",
+                                    pId: item.userDepId,
+                                    realName: item.userName,
+                                    type: 1,
+                                    userId: item.userLoginId,
+                                });
+                            });
+                        this.$refs.members.show(this.addPropsForDepart(data));
+                    } else {
+                        this.$message.error(json.message);
+                    }
+                })
+                .catch((json) => {
+                    this.$message.error(json.message);
+                });
         },
+
         confirm(list) {
             //点击确定后的回调
             console.log(list);
-            // this.channelForm.managers = list.slice(0);
+            if (list.length > 0) {
+                let param = []
+                list.map(item => {
+                    param.push({
+                        userLoginId: item.userId,
+                        userName: item.realName,
+                        userDepId: item.pId
+                    })
+                })
+                getPower({
+                    columnPowerList: param,
+                    columnId: this.id
+                }).then(json => {
+                    if (json.success) {
+                        this.$message.success("权限变更成功")
+                    } else {
+                        this.$message.error(json.message);
+                    }
+                }).catch(json => {
+                    this.$message.error(json.message);
+                })
+            } else {
+                return false
+            }
         },
+
         overflow() {
-            console.log('超出最大长度');
+            this.$message.warning("超出最大可选人数");
         },
+
         //给部门添加一些属性
         addPropsForDepart(departs) {
             return departs.map(item => {
@@ -43,6 +96,7 @@ export default {
                 return item;
             });
         },
+
         //给成员添加一些属性
         addPropsForMember(members) {
             return members.map(item => {
@@ -51,6 +105,7 @@ export default {
                 return item;
             });
         },
+
         //点击部门加载部门成员
         getDepartMember(data) {
             this.curNode = data.curNode;
@@ -64,6 +119,7 @@ export default {
             }
             this.getCenterMemberByOrganId(param);
         },
+
         //滚动加载更多成员
         loadMoreMember(data) {
             this.curNode = data.curNode;
@@ -82,6 +138,7 @@ export default {
                 this.centerMembers = this.centerMembers.concat(this.addPropsForDepart(result.content));
             });
         },
+
         //获取一级部门或子部门
         getDeparts(param) {
             selectMemberApi.getDepartsRequest(param).then(result => {
@@ -96,11 +153,13 @@ export default {
                 console.log(err);
             });
         },
+
         //检索部门
         searchDepartByName(searchName) {
             this.firstLevelDeparts.length = 0;
             this.getDeparts({ departmentId: '', departmentName: searchName });
         },
+
         //懒加载获取子部门
         getChildrenDepart(param) {
             selectMemberApi.getDepartsRequest({ departmentId: param.node.data.userId, departmentName: '' }).then(result => {

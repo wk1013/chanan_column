@@ -90,7 +90,7 @@
                 上传知识
               </div>
               <span @click="getEdit">编辑专栏</span>
-              <span @click="addMember">权限变更</span>
+              <span @click="getPower">权限变更</span>
               <span @click="getKnow(detail.title)">专栏文档管理</span>
               <span @click="Delete">删除</span>
             </div>
@@ -143,7 +143,7 @@
           :props="defaultProps"
           :language="language"
           :disabled-list="disabledList"
-          :max-length="10"
+          :max-length="300"
           :forward="forward"
           @overflow="overflow"
           @confirm="confirm"
@@ -379,6 +379,11 @@ export default {
             });
         })
         .catch(() => {});
+    },
+
+    //获取可访问专栏的人员
+    getPower() {
+      this.addMember(this.id);
     },
   },
 };

@@ -134,7 +134,7 @@
           :props="defaultProps"
           :language="language"
           :disabled-list="disabledList"
-          :max-length="10"
+          :max-length="300"
           :forward="forward"
           @overflow="overflow"
           @confirm="confirm"
@@ -155,7 +155,6 @@ import {
   DeleteSubscribe,
   SearchKnowledge,
   DeleteColumn,
-  getUserList,
 } from "@/api/interface/home";
 import Knowlist from "@/components/dialog/knowlist.vue";
 import EditDetail from "@/components/dialog/editSpecial.vue";
@@ -374,36 +373,8 @@ export default {
 
     //获取可访问专栏的人员
     getPower() {
-      getUserList({
-        columnId: this.id,
-      })
-        .then((json) => {
-          console.log();
-          if (json.success) {
-            let data = [];
-            json.content.length > 0 &&
-              json.content.map((item) => {
-                data.push({
-                  logo: "",
-                  pId: "",
-                  realName: item.userName,
-                  type: 1,
-                  userId: item.userLoginId,
-                });
-              });
-          } else {
-            this.$message.error(json.message);
-          }
-        })
-        .catch((json) => {
-          this.$message.error(json.message);
-        });
-      // this.addMember();
+      this.addMember(this.id);
     },
-
-    // confirm(list) {
-    //   console.log(list);
-    // },
   },
 };
 </script>
