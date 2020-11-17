@@ -14,15 +14,6 @@
         <span class="font-s14 color3">专栏名称：</span>
         <el-input v-model.trim="title" placeholder="请输入内容"></el-input>
       </div>
-      <!-- <div class="dialog-item">
-        <span class="font-s14 color3">所属部门：</span>
-        <el-input
-          style="width: 520px"
-          v-model="department"
-          readonly
-          placeholder=""
-        ></el-input>
-      </div> -->
       <div class="dialog-item" style="align-items: baseline">
         <span class="font-s14 color3">专栏简介：</span>
         <el-input

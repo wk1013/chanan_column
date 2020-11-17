@@ -5,6 +5,7 @@
       v-for="(item, index) in options"
       @click="getPerson(item.sysId)"
     >
+      <span v-show="item.IsTopping == 1" class="istop">置顶</span>
       <div class="person-t">
         <div class="person-img">
           <img :src="item.imgUrl" />

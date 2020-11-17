@@ -94,7 +94,7 @@
           <el-pagination
             @current-change="handleCurrentChange"
             :current-page.sync="currentPage"
-            :page-size="12"
+            :page-size="10"
             layout="prev, pager, next, jumper"
             :total="total"
             background

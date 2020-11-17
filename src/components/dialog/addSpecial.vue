@@ -21,15 +21,6 @@
         <span class="font-s14 color3">专栏名称：</span>
         <el-input v-model.trim="title" placeholder="请输入内容"></el-input>
       </div>
-      <!-- <div class="dialog-item" v-show="personVisible">
-        <span class="font-s14 color3">所属部门：</span>
-        <el-input
-          style="width: 520px"
-          v-model="department"
-          readonly
-          placeholder=""
-        ></el-input>
-      </div> -->
       <div class="dialog-item" style="align-items: baseline">
         <span class="font-s14 color3">专栏简介：</span>
         <el-input
@@ -85,9 +76,9 @@
       </div>
     </div>
     <span slot="footer" class="dialog-footer">
-      <el-button type="primary" @click="confirm" round :disabled="isDisable"
-        >提交审核</el-button
-      >
+      <el-button type="primary" @click="confirm" round :disabled="isDisable">{{
+        addflag ? "确定" : "提交审核"
+      }}</el-button>
       <el-button @click="cancel" round>取 消</el-button>
     </span>
   </el-dialog>
@@ -117,6 +108,10 @@ export default {
   },
   props: {
     visible: {
+      type: Boolean,
+      default: false,
+    },
+    addflag: {
       type: Boolean,
       default: false,
     },

@@ -77,6 +77,7 @@
     </el-pagination>
     <add-special
       :visible="visible"
+      :addflag="true"
       @confirm="confirm"
       @cancel="cancel"
     ></add-special>
