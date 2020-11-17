@@ -190,6 +190,33 @@ export default {
 
     //专题与人物切换
     ChangeTab(index) {
+      if (index == 0) {
+        this.options = [
+          {
+            value: 0,
+            label: "全部",
+          },
+          {
+            value: 1,
+            label: "置顶",
+          },
+        ];
+      } else {
+        this.options = [
+          {
+            value: 0,
+            label: "全部",
+          },
+          {
+            value: 1,
+            label: "置顶",
+          },
+          {
+            value: 2,
+            label: "大V",
+          },
+        ];
+      }
       this.getClear(index);
     },
 

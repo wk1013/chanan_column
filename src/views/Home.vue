@@ -92,7 +92,7 @@
   </el-container>
 </template>
 <script>
-import { getSpecial, getUserInfo } from "@/api/interface/home";
+import { getSpecial } from "@/api/interface/home";
 import AddSpecial from "@/components/dialog/addSpecial.vue";
 import Speciallist from "@/components/dialog/speciallist.vue";
 import Personlist from "@/components/dialog/personlist.vue";
@@ -116,7 +116,6 @@ export default {
   },
   created() {
     this.init();
-    this.getUser();
   },
   components: {
     AddSpecial,
@@ -137,20 +136,6 @@ export default {
             this.options = json.content.data;
           } else {
             this.$message.error(json.message);
-          }
-        })
-        .catch((json) => {
-          this.$message.error(json.message);
-        });
-    },
-
-    //获取用户信息并保存
-    getUser() {
-      getUserInfo({})
-        .then((json) => {
-          if (json.success) {
-            const data = json.content;
-            sessionStorage.setItem("UserInfo", JSON.stringify(data));
           }
         })
         .catch((json) => {

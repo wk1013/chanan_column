@@ -28,7 +28,7 @@
         </div>
         <div class="know-select">
           <div class="select-item" style="padding-top: 30px">
-            <span class="select-title">专题专栏：</span>
+            <span class="select-title">主题专栏：</span>
             <div class="select-body">
               <div
                 :class="[{ active: isSpecial == index }, 'select-i']"

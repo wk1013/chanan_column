@@ -13,7 +13,7 @@
       <div class="dialog-radio">
         <span class="font-s14 color3">知识专栏：</span>
         <el-radio-group v-model="radio" @change="change">
-          <el-radio :label="0">专题专栏</el-radio>
+          <el-radio :label="0">主题专栏</el-radio>
           <el-radio :label="1">人物专栏</el-radio>
         </el-radio-group>
       </div>

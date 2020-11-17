@@ -57,7 +57,7 @@
   </div>
 </template>
 <script>
-import { DeleteSubscribe } from "@/api/interface/home";
+import { DeleteSubscribe, getSpecialDetail } from "@/api/interface/home";
 
 export default {
   data() {
@@ -81,10 +81,22 @@ export default {
 
     //跳转单个专题专栏
     getSpecial(id) {
-      window.open(
-        "http://47.92.202.73/column?tk_param=f52739360bb94aa88d30270cbc25d362#/specialDetail?id=" +
-          id
-      );
+      getSpecialDetail({
+        id: id,
+      })
+        .then((json) => {
+          if (json.success) {
+            window.open(
+              "http://47.92.202.73/column?tk_param=f52739360bb94aa88d30270cbc25d362#/specialDetail?id=" +
+                id
+            );
+          } else {
+            this.$message.warning("您不在该专栏的权限范围内");
+          }
+        })
+        .catch((json) => {
+          this.$message.error(json.message);
+        });
     },
 
     //取消订阅专栏

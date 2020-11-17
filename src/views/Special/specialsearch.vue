@@ -6,7 +6,7 @@
           <el-breadcrumb-item :to="{ path: '/' }" replace
             >知识专栏</el-breadcrumb-item
           >
-          <el-breadcrumb-item>专题检索结果</el-breadcrumb-item>
+          <el-breadcrumb-item>主题检索结果</el-breadcrumb-item>
         </el-breadcrumb>
         <div class="search">
           <el-input
@@ -21,7 +21,7 @@
               slot="prepend"
               placeholder="请选择"
             >
-              <el-option label="专题" value="1"></el-option>
+              <el-option label="主题" value="1"></el-option>
             </el-select>
             <el-button slot="append" type="primary" @click="search"
               >检索</el-button
