@@ -66,9 +66,9 @@ export default {
     getMessage(e) {
       console.log(e.data.status);
       if (e.data.status === "success") {
-        self.changeNodeMsg();
+        this.changeNodeMsg();
       } else if (e.data.status === "cancel") {
-        self.$router.back(-1);
+        this.$router.back(-1);
       }
     },
 
