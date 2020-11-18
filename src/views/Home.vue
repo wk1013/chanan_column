@@ -164,7 +164,7 @@ export default {
       }
       if (this.select == "1") {
         this.$router.push({
-          path: "/know",
+          path: "/knowledgeSearch",
           query: {
             inputText: this.inputText,
           },

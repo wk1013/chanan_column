@@ -45,15 +45,10 @@ export default {
     oIframe.style.width = Number(deviceWidth) - 220 + "px"; //数字是页面布局宽度差值
     oIframe.style.height = Number(deviceHeight) - 120 + "px"; //数字是页面布局高度差
 
-    let self = this;
-    window.addEventListener("message", function (e) {
-      console.log(e.data.status);
-      if (e.data.status === "success") {
-        self.changeNodeMsg();
-      } else if (e.data.status === "cancel") {
-        self.$router.back(-1);
-      }
-    });
+    window.addEventListener("message", this.getMessage, true);
+  },
+  destroyed() {
+    window.removeEventListener("message", this.getMessage, true);
   },
   methods: {
     //获取外部接口信息
@@ -66,6 +61,15 @@ export default {
         "&columnType=" +
         type;
       return url;
+    },
+
+    getMessage(e) {
+      console.log(e.data.status);
+      if (e.data.status === "success") {
+        self.changeNodeMsg();
+      } else if (e.data.status === "cancel") {
+        self.$router.back(-1);
+      }
     },
 
     //监听iframe返回值

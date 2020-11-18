@@ -30,8 +30,8 @@ const routes = [
     component: PersonSearch
   },
   {
-    path: '/know',
-    name: 'know',
+    path: '/knowledgeSearch',
+    name: 'knowledgeSearch',
     component: Know
   },
   {
@@ -45,22 +45,22 @@ const routes = [
     component: PersonDetail
   },
   {
-    path: '/knowList',
-    name: 'knowList',
+    path: '/knowledgeList',
+    name: 'knowledgeList',
     component: KnowList
   },
   {
-    path: '/knowupload',
-    name: 'knowupload',
+    path: '/knowledgeupload',
+    name: 'knowledgeupload',
     component: KnowUpload
   },
   {
-    path: '/column',
+    path: '/backstage/column',
     name: 'column',
     component: Column
   },
   {
-    path: '/usercolumn',
+    path: '/personal/column',
     name: 'usercolumn',
     component: UserColumn
   }

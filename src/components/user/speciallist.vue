@@ -86,10 +86,7 @@ export default {
       })
         .then((json) => {
           if (json.success) {
-            window.open(
-              "http://47.92.202.73/column?tk_param=f52739360bb94aa88d30270cbc25d362#/specialDetail?id=" +
-                id
-            );
+            window.open("http://47.92.202.73/column/#/specialDetail?id=" + id);
           } else {
             this.$message.warning("您不在该专栏的权限范围内");
           }

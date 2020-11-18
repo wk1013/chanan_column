@@ -335,7 +335,7 @@ export default {
     getKnow(name) {
       const id = this.$route.query.id;
       this.$router.push({
-        path: "/knowList",
+        path: "/knowledgeList",
         query: {
           id: id,
           title: name,
@@ -346,7 +346,7 @@ export default {
     //上传知识
     getUpload(name) {
       this.$router.push({
-        path: "/knowupload",
+        path: "/knowledgeupload",
         query: {
           id: this.id,
           title: name,

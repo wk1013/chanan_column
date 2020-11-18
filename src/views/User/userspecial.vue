@@ -108,9 +108,7 @@ export default {
 
     //跳转专栏广场
     getNewspecial() {
-      window.open(
-        "http://47.92.202.73/column?tk_param=da88f4cb82d34a6fab6281c306f0ef86"
-      );
+      window.open("http://47.92.202.73/column");
     },
   },
 };
