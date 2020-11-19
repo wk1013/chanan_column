@@ -33,7 +33,7 @@
             >
           </div>
           <span class="font-s12 color9"
-            >更新{{ showDate(item.updateDate) }}</span
+            >更新{{ handleDate(item.updateDate) }}</span
           >
         </div>
       </div>
@@ -58,6 +58,7 @@
 </template>
 <script>
 import { DeleteSubscribe, getSpecialDetail } from "@/api/interface/home";
+import { showDate } from "@/utils/index.js";
 
 export default {
   data() {
@@ -74,12 +75,9 @@ export default {
     },
   },
   methods: {
-    //时间截取
-    showDate(date) {
-      return date.slice(0, 10);
-    },
+    handleDate: showDate,
 
-    //跳转单个专题专栏
+    //跳转单个主题专栏
     getSpecial(id) {
       getSpecialDetail({
         id: id,
@@ -121,7 +119,7 @@ export default {
       }
     },
 
-    //跳转专题专栏中的单个知识
+    //跳转主题专栏中的单个知识
     getSpecialItem(id) {
       console.log("跳转知识页面");
     },

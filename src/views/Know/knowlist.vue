@@ -35,13 +35,7 @@
               </el-input>
             </div>
           </div>
-          <div
-            style="
-              padding-top: 20px;
-              padding-bottom: 35px;
-              border-top: 1px solid #ddd;
-            "
-          >
+          <div style="padding-top: 20px; padding-bottom: 35px">
             <el-table
               :data="tableData"
               style="width: 100%"
@@ -52,10 +46,9 @@
                   {{ scope.$index + 1 }}
                 </template>
               </el-table-column>
-              <el-table-column label="篇名">
+              <el-table-column label="篇名" show-overflow-tooltip>
                 <template slot-scope="scope">
                   <span
-                    :title="scope.row.title"
                     class="font-s14 color3 kt-title"
                     style="cursor: pointer"
                     @click="getKnowDetail(scope.row.guid)"
@@ -73,7 +66,7 @@
               <el-table-column label="提交时间" width="200" align="center">
                 <template slot-scope="scope">
                   <span class="font-s14 color3">{{
-                    scope.row.createTime
+                    handleDate(scope.row.createTime)
                   }}</span>
                 </template>
               </el-table-column>
@@ -109,6 +102,7 @@
 </template>
 <script>
 import { SearchKnowledge, DeleteKnow, DeleteNum } from "@/api/interface/home";
+import { showDate } from "@/utils/index.js";
 
 export default {
   data() {
@@ -125,6 +119,9 @@ export default {
     this.init();
   },
   methods: {
+    handleDate: showDate,
+
+    //查询专栏知识
     init() {
       SearchKnowledge({
         title: this.inputText,
@@ -146,13 +143,13 @@ export default {
         });
     },
 
-    //搜索
+    //搜索专栏知识
     search() {
       this.currentPage = 1;
       this.init();
     },
 
-    //删除
+    //删除知识
     delTask(data) {
       this.$confirm("确定将该知识删除?", "删除知识", {
         confirmButtonText: "确定",

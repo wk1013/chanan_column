@@ -65,8 +65,8 @@ export default {
   components: {
     Speciallist,
   },
-  watch: {},
   methods: {
+    //查询专栏列表
     init() {
       getSpecial({
         current: this.currentPage,

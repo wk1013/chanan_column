@@ -188,7 +188,7 @@ export default {
       this.visible = false;
     },
 
-    //专题与人物切换
+    //主题与人物切换
     ChangeTab(index) {
       if (index == 0) {
         this.options = [
@@ -226,7 +226,7 @@ export default {
       this.init();
     },
 
-    //编辑专栏
+    //打开编辑弹框
     Edit(data) {
       this.detail = data;
       if (this.isActive == 0) {
@@ -246,7 +246,7 @@ export default {
       this.init();
     },
 
-    //关闭编辑专栏弹框
+    //关闭编辑弹框
     Editcancel() {
       if (this.isActive == 0) {
         this.editSvisible = false;

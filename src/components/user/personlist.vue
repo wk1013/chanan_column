@@ -53,7 +53,7 @@
             >
           </div>
           <span class="font-s12 color9"
-            >更新{{ showDate(item.updateDate) }}</span
+            >更新{{ handleDate(item.updateDate) }}</span
           >
         </div>
       </div>
@@ -62,6 +62,7 @@
 </template>
 <script>
 import { DeleteSubscribe, getSpecialDetail } from "@/api/interface/home";
+import { showDate } from "@/utils/index.js";
 
 export default {
   data() {
@@ -78,10 +79,7 @@ export default {
     },
   },
   methods: {
-    //时间截取
-    showDate(date) {
-      return date.slice(0, 10);
-    },
+    handleDate: showDate,
 
     //取消订阅专栏
     getSubscribe(id) {

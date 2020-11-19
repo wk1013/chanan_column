@@ -22,7 +22,7 @@
         <h1
           class="font-s18 color3"
           style="margin: 12px 0; cursor: pointer"
-          v-html="showData(item.title)"
+          v-html="handleTitle(inputKey, item.title)"
         ></h1>
         <div class="person-span">
           <span class="font-s16 color3" style="margin-right: 20px">{{
@@ -69,7 +69,7 @@
             >
           </div>
           <span class="font-s12 color9"
-            >更新{{ showDate(item.updateDate) }}</span
+            >更新{{ handleDate(item.updateDate) }}</span
           >
         </div>
       </div>
@@ -82,6 +82,7 @@ import {
   DeleteSubscribe,
   getSpecialDetail,
 } from "@/api/interface/home";
+import { showDate, showData } from "@/utils/index.js";
 
 export default {
   data() {
@@ -109,21 +110,9 @@ export default {
     },
   },
   methods: {
-    showData(text) {
-      if (this.inputKey == "") {
-        return text;
-      } else {
-        return text.replace(
-          this.inputKey,
-          '<font color="red">' + this.inputKey + "</font>"
-        );
-      }
-    },
+    handleTitle: showData,
 
-    //时间截取
-    showDate(date) {
-      return date.slice(0, 10);
-    },
+    handleDate: showDate,
 
     //已订阅的专栏鼠标移入移出时的操作
     enter(index) {

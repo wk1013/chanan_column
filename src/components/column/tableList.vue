@@ -6,16 +6,12 @@
     :row-class-name="rowClassName"
     :row-style="rowStyle"
   >
-    <el-table-column label="序号" align="center" width="80">
+    <el-table-column label="序号" align="center" width="100">
       <template slot-scope="scope">
         {{ scope.$index + 1 }}
       </template>
     </el-table-column>
-    <el-table-column
-      prop="title"
-      label="专栏名称"
-      :show-overflow-tooltip="true"
-    >
+    <el-table-column prop="title" label="专栏名称" show-overflow-tooltip>
     </el-table-column>
     <el-table-column
       prop="createUserName"
@@ -24,9 +20,9 @@
       width="100"
     >
     </el-table-column>
-    <el-table-column label="创建时间" align="center" width="150">
+    <el-table-column label="创建时间" align="center" width="200">
       <template slot-scope="scope">
-        <span>{{ showDate(scope.row.createDate) }}</span>
+        <span>{{ handleDate(scope.row.createDate) }}</span>
       </template>
     </el-table-column>
     <el-table-column
@@ -84,42 +80,6 @@
         >
       </template>
     </el-table-column>
-    <el-table-column prop="canManage" label="排序" align="center" width="120">
-      <template slot-scope="scope">
-        <svg
-          slot="suffix"
-          aria-hidden="true"
-          class="icon icon6"
-          @click="getSort(scope.row, true, 10)"
-        >
-          <use xlink:href="#iconshuangjiantou-top" />
-        </svg>
-        <svg
-          slot="suffix"
-          aria-hidden="true"
-          class="icon icon6"
-          @click="getSort(scope.row, false, 10)"
-        >
-          <use xlink:href="#iconshuangjiantou-down" />
-        </svg>
-        <svg
-          slot="suffix"
-          aria-hidden="true"
-          class="icon icon6"
-          @click="getSort(scope.row, true, 1)"
-        >
-          <use xlink:href="#iconshangjiantou1" />
-        </svg>
-        <svg
-          slot="suffix"
-          aria-hidden="true"
-          class="icon icon6"
-          @click="getSort(scope.row, false, 1)"
-        >
-          <use xlink:href="#iconshangjiantou" />
-        </svg>
-      </template>
-    </el-table-column>
   </el-table>
 </template>
 <script>
@@ -130,6 +90,7 @@ import {
   getColumnItem,
 } from "@/api/interface/column";
 import { DeleteColumn } from "@/api/interface/home";
+import { showDate } from "@/utils/index.js";
 
 export default {
   data() {
@@ -163,10 +124,7 @@ export default {
     },
   },
   methods: {
-    //时间截取
-    showDate(date) {
-      return date.slice(0, 10);
-    },
+    handleDate: showDate,
 
     rowClassName({ row, rowIndex }) {
       if ((rowIndex + 1) % 2 === 0) {
@@ -251,33 +209,6 @@ export default {
             });
         })
         .catch(() => {});
-    },
-
-    //排序操作
-    getSort(data, flag, num) {
-      if (this.isDisable) {
-        return false;
-      } else {
-        this.isDisable = true;
-        getOrder({
-          sysId: data.sysId,
-          sortType: flag ? "up" : "down",
-          num: num,
-        })
-          .then((json) => {
-            this.isDisable = false;
-            if (json.success) {
-              this.$message.success("操作成功");
-              this.$emit("confirm");
-            } else {
-              this.$message.error(json.message);
-            }
-          })
-          .catch((json) => {
-            this.isDisable = false;
-            this.$message.error(json.message);
-          });
-      }
     },
 
     //编辑专栏

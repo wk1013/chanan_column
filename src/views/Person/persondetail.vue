@@ -76,7 +76,9 @@
               <span class="special-span font-s12 color9"
                 >浏览{{ detail.browseNum }}</span
               >
-              <span class="font-s12 color9">更新{{ detail.updateDate }}</span>
+              <span class="font-s12 color9"
+                >更新{{ handleDate(detail.updateDate) }}</span
+              >
             </div>
             <div
               v-show="isUser"
@@ -124,7 +126,7 @@
             :total="total"
             background
             hide-on-single-page
-            style="text-align: center; margin-top: 30px"
+            style="text-align: center; margin-top: 40px"
           >
           </el-pagination>
         </div>
@@ -169,6 +171,7 @@ import Knowlist from "@/components/dialog/knowlist.vue";
 import EditPerson from "@/components/dialog/editPerson.vue";
 import CheckMembers from "@/utils/check-members.min.js";
 import selectMember from "@/utils/selectMember.js";
+import { showDate } from "@/utils/index.js";
 
 export default {
   data() {
@@ -198,6 +201,9 @@ export default {
     this.getKnowledge();
   },
   methods: {
+    handleDate: showDate,
+
+    //查询专栏详情
     init() {
       getSpecialDetail({
         id: this.id,
@@ -221,7 +227,7 @@ export default {
         });
     },
 
-    //获取专栏知识
+    //获取专栏知识列表
     getKnowledge() {
       SearchKnowledge({
         title: this.inputText,
@@ -292,14 +298,14 @@ export default {
       }
     },
 
-    //搜索
+    //搜索本专栏知识
     search() {
       this.isHot = true;
       this.currentPage = 1;
       this.getKnowledge();
     },
 
-    //按时间或热度排序
+    //按时间排序
     getHot(flag) {
       this.isHot = !this.isHot;
       this.currentPage = 1;
@@ -325,13 +331,13 @@ export default {
       this.init();
     },
 
-    //关闭编辑专栏弹框
+    //关闭编辑弹框
     cancel() {
       this.editvisible = false;
       this.editdetail = {};
     },
 
-    //专栏知识管理
+    //专栏文档管理
     getKnow(name) {
       const id = this.$route.query.id;
       this.$router.push({
@@ -343,7 +349,7 @@ export default {
       });
     },
 
-    //上传知识
+    //知识上传
     getUpload(name) {
       this.$router.push({
         path: "/knowledgeupload",
@@ -381,7 +387,7 @@ export default {
         .catch(() => {});
     },
 
-    //获取可访问专栏的人员
+    //获取可访问专栏的人员列表
     getPower() {
       this.addMember(this.id);
     },

@@ -79,7 +79,9 @@
       <el-button type="primary" @click="confirm" round :disabled="isDisable">{{
         addflag ? "确定" : "提交审核"
       }}</el-button>
-      <el-button @click="cancel" round>取 消</el-button>
+      <el-button @click="cancel" round style="margin-left: 30px"
+        >取 消</el-button
+      >
     </span>
   </el-dialog>
 </template>
@@ -97,7 +99,6 @@ export default {
       inputValue: "",
       personVisible: false,
       imageUrl: "",
-      // action: "http://39.99.207.216:8091/file/upload",
       action: "/column/file/upload",
       department: "技术部门",
       isDisable: false,
@@ -117,7 +118,7 @@ export default {
     },
   },
   methods: {
-    //新建专题或者人物专栏切换
+    //新建主题或者人物专栏切换
     change(value) {
       this.personVisible = !this.personVisible;
       this.getClear(value);

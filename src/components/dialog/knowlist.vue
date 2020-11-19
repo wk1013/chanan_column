@@ -7,7 +7,9 @@
           >作者：{{ item.author }}</span
         >
         <span class="font-s12 color9">来源：{{ item.from }}</span>
-        <span class="font-s12 color9">发布时间：{{ item.createTime }}</span>
+        <span class="font-s12 color9"
+          >发布时间：{{ handleDate(item.createTime) }}</span
+        >
       </div>
       <p class="font-s14 color6">
         {{ item.description }}
@@ -16,6 +18,8 @@
   </div>
 </template>
 <script>
+import { showDate } from "@/utils/index.js";
+
 export default {
   data() {
     return {};
@@ -29,6 +33,8 @@ export default {
     },
   },
   methods: {
+    handleDate: showDate,
+
     showData(text) {
       return text
         .replace(/###/g, '<span style="color:red">')

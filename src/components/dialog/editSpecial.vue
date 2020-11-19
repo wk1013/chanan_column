@@ -23,7 +23,7 @@
           placeholder="请输入内容"
         ></el-input>
       </div>
-      <div class="dialog-item" style="align-items: start">
+      <div class="dialog-item" style="align-items: start; margin-bottom: 0">
         <span class="font-s14 color3">上传封面：</span>
         <el-upload
           class="avatar-uploader"
@@ -41,7 +41,9 @@
       <el-button type="primary" @click="confirm" round :disabled="isDisable"
         >确定</el-button
       >
-      <el-button @click="cancel" round>取 消</el-button>
+      <el-button @click="cancel" round style="margin-left: 30px"
+        >取 消</el-button
+      >
     </span>
   </el-dialog>
 </template>
@@ -57,7 +59,6 @@ export default {
       id: "",
       imageUrl: "",
       isDisable: false,
-      // action: "http://39.99.207.216:8091/file/upload",
       action: "/column/file/upload",
     };
   },

@@ -67,7 +67,9 @@
               <span class="special-span font-s12 color9"
                 >浏览{{ detail.browseNum }}</span
               >
-              <span class="font-s12 color9">更新{{ detail.updateDate }}</span>
+              <span class="font-s12 color9"
+                >更新{{ handleDate(detail.updateDate) }}</span
+              >
             </div>
             <div
               v-show="isUser"
@@ -115,7 +117,7 @@
             :total="total"
             background
             hide-on-single-page
-            style="text-align: center; margin-top: 30px"
+            style="text-align: center; margin-top: 40px"
           >
           </el-pagination>
         </div>
@@ -160,6 +162,7 @@ import Knowlist from "@/components/dialog/knowlist.vue";
 import EditDetail from "@/components/dialog/editSpecial.vue";
 import CheckMembers from "@/utils/check-members.min.js";
 import selectMember from "@/utils/selectMember.js";
+import { showDate } from "@/utils/index.js";
 
 export default {
   data() {
@@ -189,6 +192,9 @@ export default {
     this.getKnowledge();
   },
   methods: {
+    handleDate: showDate,
+
+    //查询专栏详情
     init() {
       getSpecialDetail({
         id: this.id,
@@ -316,13 +322,13 @@ export default {
       this.init();
     },
 
-    //关闭编辑专栏弹框
+    //关闭编辑弹框
     cancel() {
       this.editvisible = false;
       this.editdetail = {};
     },
 
-    //专栏知识管理
+    //专栏文档管理
     getKnow(name) {
       this.$router.push({
         path: "/knowledgeList",
@@ -333,7 +339,7 @@ export default {
       });
     },
 
-    //上传知识
+    //知识上传
     getUpload(name) {
       this.$router.push({
         path: "/knowledgeupload",
@@ -371,7 +377,7 @@ export default {
         .catch(() => {});
     },
 
-    //获取可访问专栏的人员
+    //获取可访问专栏的人员列表
     getPower() {
       this.addMember(this.id);
     },

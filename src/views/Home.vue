@@ -151,7 +151,7 @@ export default {
       this.init();
     },
 
-    //专题与人物切换
+    //主题与人物切换
     ChangeTab(index) {
       this.getClear(index);
     },

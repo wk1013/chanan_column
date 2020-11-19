@@ -180,6 +180,7 @@ export default {
     Knowlist,
   },
   methods: {
+    //页面初始知识查询
     init() {
       SearchKnowledge({
         title: this.inputText,
@@ -280,7 +281,7 @@ export default {
       this.getKnowledge();
     },
 
-    //专题查询
+    //主题查询
     SpecialSearch(index, id) {
       if (this.isSpecial == index) {
         return false;
@@ -290,7 +291,7 @@ export default {
       this.getColumn(id);
     },
 
-    //展开及收起专题专栏
+    //展开及收起主题专栏
     SpecialOpen(index) {
       this.isSpecialOpen = index;
       if (index) {

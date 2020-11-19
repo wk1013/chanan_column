@@ -69,6 +69,7 @@ export default {
     Personlist,
   },
   methods: {
+    //查询人物专栏
     init() {
       getSpecial({
         current: this.currentPage,

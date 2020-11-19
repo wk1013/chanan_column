@@ -13,13 +13,16 @@
           >
           <el-breadcrumb-item>知识上传</el-breadcrumb-item>
         </el-breadcrumb>
-        <iframe
-          ref="iframe"
-          id="bdIframe"
-          :src="getUrl()"
-          frameborder="0"
-          scrolling="no"
-        ></iframe>
+        <div style="height: 80vh">
+          <iframe
+            ref="iframe"
+            id="bdIframe"
+            :src="getUrl()"
+            frameborder="0"
+            width="100%"
+            height="100%"
+          ></iframe>
+        </div>
       </div>
     </el-main>
   </el-container>
@@ -36,15 +39,6 @@ export default {
     };
   },
   mounted() {
-    /**
-     * iframe-宽高自适应显示
-     */
-    const oIframe = document.getElementById("bdIframe");
-    const deviceWidth = document.documentElement.clientWidth;
-    const deviceHeight = document.documentElement.clientHeight;
-    oIframe.style.width = Number(deviceWidth) - 220 + "px"; //数字是页面布局宽度差值
-    oIframe.style.height = Number(deviceHeight) - 120 + "px"; //数字是页面布局高度差
-
     window.addEventListener("message", this.getMessage, true);
   },
   destroyed() {
@@ -63,8 +57,8 @@ export default {
       return url;
     },
 
+    //监听iframe返回值
     getMessage(e) {
-      console.log(e.data.status);
       if (e.data.status === "success") {
         this.changeNodeMsg();
       } else if (e.data.status === "cancel") {
@@ -72,7 +66,7 @@ export default {
       }
     },
 
-    //监听iframe返回值
+    //知识数+1并返回
     changeNodeMsg() {
       AddNum({
         specialColumnId: this.id,

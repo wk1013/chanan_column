@@ -73,6 +73,7 @@ export default {
     this.init();
   },
   methods: {
+    //查询已订阅专栏列表
     init() {
       getUserSpecial({
         current: this.currentPage,
@@ -92,7 +93,7 @@ export default {
         });
     },
 
-    //专题与人物切换
+    //主题与人物切换
     ChangeTab(index) {
       this.isActive = index;
       this.currentPage = 1;
