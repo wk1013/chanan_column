@@ -100,6 +100,7 @@ export default {
         background: "#498be3",
         fontSize: "16px",
         color: "#ffffff",
+        fontWeight: "500",
       },
       rowStyle: {
         height: "44px",
@@ -242,5 +243,8 @@ export default {
 .icon6 {
   color: #367fff;
   cursor: pointer;
+}
+.el-button--text {
+  color: #236deb;
 }
 </style>

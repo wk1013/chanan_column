@@ -11,9 +11,6 @@
           >发布时间：{{ handleDate(item.createTime) }}</span
         >
       </div>
-      <p class="font-s14 color6">
-        {{ item.description }}
-      </p>
     </div>
   </div>
 </template>

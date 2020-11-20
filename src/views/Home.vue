@@ -4,7 +4,7 @@
       <div class="body">
         <div class="header flex">
           <div class="flex">
-            <h1 class="font-s24 color3">知识专栏</h1>
+            <h1 class="font-s24 color3 blod">知识专栏</h1>
             <div class="flex" style="margin-left: 40px">
               <div
                 :class="[
@@ -14,6 +14,7 @@
                   'color3',
                 ]"
                 @click="ChangeTab(0)"
+                style="margin-right: 30px"
               >
                 主题专栏
                 <span v-if="isActive == 0"></span>

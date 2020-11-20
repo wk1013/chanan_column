@@ -1,6 +1,6 @@
 <template>
   <div class="usercolumn">
-    <div class="header flex">
+    <div class="flex" style="justify-content: space-between">
       <div class="flex">
         <div class="flex">
           <div
@@ -11,6 +11,7 @@
               'color3',
             ]"
             @click="ChangeTab(0)"
+            style="margin-right: 30px"
           >
             主题专栏
             <span v-if="isActive == 0"></span>
@@ -118,7 +119,7 @@ export default {
 .usercolumn {
   background-color: #fff;
   padding: 30px;
-  border-radius: 6px;
+  border-radius: 8px;
   width: 1600px;
   margin: 0 auto;
 }

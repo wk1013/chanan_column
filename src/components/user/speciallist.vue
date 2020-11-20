@@ -10,7 +10,9 @@
       </div>
       <div style="padding: 0 16px">
         <div class="special-l">
-          <span class="font-s16 color3 text-ellipsis">{{ item.title }}</span>
+          <span class="font-s16 color3 text-ellipsis blod">{{
+            item.title
+          }}</span>
           <div
             class="ifsub"
             v-if="item.isSub"

@@ -12,7 +12,7 @@
       <div style="padding: 0 16px">
         <div class="special-l">
           <span
-            class="font-s16 color3 text-ellipsis"
+            class="font-s16 color3 text-ellipsis blod"
             v-html="handleTitle(inputKey, item.title)"
           ></span>
           <div

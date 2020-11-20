@@ -28,7 +28,7 @@
         </div>
         <div class="know-select">
           <div class="select-item" style="padding-top: 30px">
-            <span class="select-title">主题专栏：</span>
+            <span class="font-s14 color3 blod">主题专栏：</span>
             <div class="select-body">
               <div
                 :class="[{ active: isSpecial == index }, 'select-i']"
@@ -66,7 +66,7 @@
             class="select-item"
             style="border-top: 1px solid #ddd; padding: 20px 0 10px 0"
           >
-            <span class="select-title">人物专栏：</span>
+            <span class="font-s14 color3 blod">人物专栏：</span>
             <div class="select-body">
               <div
                 :class="[{ active: isPerson == index }, 'select-i']"

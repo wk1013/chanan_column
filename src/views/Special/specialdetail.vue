@@ -4,7 +4,7 @@
       <div class="body">
         <div class="header flex">
           <h1
-            class="font-s24 color3"
+            class="font-s24 color3 blod"
             @click="$router.replace({ path: '/' })"
             style="cursor: pointer"
           >
@@ -54,7 +54,7 @@
                 {{ seen ? "取消订阅" : "已订阅" }}
               </div>
             </div>
-            <p class="font-s14 color6" style="margin: 15px 0">
+            <p class="font-s14 color6 linheight" style="margin: 10px 0">
               简介：{{ detail.introduce }}
             </p>
             <div>

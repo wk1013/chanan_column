@@ -72,7 +72,7 @@
       :total="total"
       hide-on-single-page
       background
-      style="text-align: center; margin-top: 30px"
+      style="text-align: center; margin-top: 50px"
     >
     </el-pagination>
     <add-special
