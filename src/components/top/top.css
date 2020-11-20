@@ -43,6 +43,14 @@ a {
   transition: 0.3s;
 }
 
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+
 /*form*/
 
 button,
@@ -194,8 +202,8 @@ textarea {
   color: #999;
 }
 .ca-search .search-box .iconsearch {
-  font-size: 22px;
-  color: #999;
+  width: 22px;
+  fill: #999;
   cursor: pointer;
   margin-left: 5px;
 }
@@ -241,17 +249,23 @@ textarea {
   align-items: center;
   margin-right: 10px;
 }
+.el-dropdown-items .el-dropdown-menu__item .iconfont {
+  width: 18px;
+  margin: 0px;
+  fill: #fff;
+}
 .el-dropdown-items .el-dropdown-menu__item .suggestion {
   background: #9d78cd;
+}
+.el-dropdown-items .el-dropdown-menu__item .suggestion .iconfont {
+  width: 16px;
 }
 .el-dropdown-items .el-dropdown-menu__item .backstage {
   background: #3f9aee;
 }
+.el-dropdown-items .el-dropdown-menu__item .backstage .iconfont {
+  width: 21px;
+}
 .el-dropdown-items .el-dropdown-menu__item .logout {
   background: #f0cb00;
-}
-.el-dropdown-items .el-dropdown-menu__item .iconfont {
-  font-size: 16px;
-  margin: 0px;
-  color: #fff;
 }

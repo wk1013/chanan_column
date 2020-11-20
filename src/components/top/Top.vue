@@ -39,10 +39,9 @@
             @keyup.enter="toSearch"
             v-model="keyword"
           />
-          <svg slot="suffix" aria-hidden="true" class="icon" @click="toSearch">
-            <use xlink:href="#iconsearch" />
+          <svg class="iconsearch" aria-hidden="true" @click="toSearch">
+            <use xlink:href="#iconsearch"></use>
           </svg>
-          <!-- <i class="iconfont iconsearch" @click="toSearch"></i> -->
         </div>
       </div>
       <div class="personal-info">
@@ -61,22 +60,20 @@
           <el-dropdown-menu slot="dropdown" class="el-dropdown-items">
             <el-dropdown-item>
               <a href="#">
-                <span class="suggestion"
-                  ><svg slot="suffix" aria-hidden="true" class="icon">
-                    <use xlink:href="#iconopinion" />
+                <span class="suggestion">
+                  <svg class="iconfont iconsearch" aria-hidden="true">
+                    <use xlink:href="#iconopinion"></use>
                   </svg>
-                  <!-- <i class="iconfont iconopinion"></i> -->
                 </span>
                 反馈建议
               </a>
             </el-dropdown-item>
             <el-dropdown-item>
               <a href="#">
-                <span class="backstage"
-                  ><svg slot="suffix" aria-hidden="true" class="icon">
-                    <use xlink:href="#iconadmin" />
+                <span class="backstage">
+                  <svg class="iconfont iconsearch" aria-hidden="true">
+                    <use xlink:href="#iconadmin"></use>
                   </svg>
-                  <!-- <i class="iconfont iconadmin"></i> -->
                 </span>
                 后台管理
               </a>
@@ -84,10 +81,9 @@
             <el-dropdown-item>
               <a @click="logOut">
                 <span class="logout">
-                  <svg slot="suffix" aria-hidden="true" class="icon">
-                    <use xlink:href="#icondropout" />
+                  <svg class="iconfont iconsearch" aria-hidden="true">
+                    <use xlink:href="#icondropout"></use>
                   </svg>
-                  <!-- <i class="iconfont icondropout"></i> -->
                 </span>
                 退出
               </a>
