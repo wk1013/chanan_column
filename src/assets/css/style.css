@@ -187,9 +187,9 @@ textarea {
   color: #333;
 }
 
-.el-container {
+.container-panel {
   background-color: #f1f2f5;
-  min-height: calc(100vh - 70px);
+  min-height: calc(100vh - 171px);
 }
 
 .el-dialog {
@@ -213,11 +213,12 @@ textarea {
 .body {
   width: 1200px;
   margin: 0 auto;
+  padding-top: 35px;
+  padding-bottom: 90px;
 }
 
 .header {
   justify-content: space-between;
-  margin-top: 15px;
 }
 
 .head-item {
@@ -516,7 +517,7 @@ textarea {
 
 /* 搜索结果页 */
 .el-breadcrumb {
-  margin-top: 15px;
+  margin-top: 0;
   margin-bottom: 20px;
 }
 

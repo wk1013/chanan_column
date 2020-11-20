@@ -1,7 +1,8 @@
 <template>
-  <el-container class="container-panel">
-    <el-main class="main-panel">
-      <div class="body">
+  <div class="main">
+    <top-html type="common"></top-html>
+    <div class="container-panel">
+      <div class="body" style="padding-bottom: 30px">
         <el-breadcrumb separator-class="el-icon-arrow-right">
           <el-breadcrumb-item :to="{ path: '/' }" replace
             >知识专栏</el-breadcrumb-item
@@ -24,8 +25,9 @@
           ></iframe>
         </div>
       </div>
-    </el-main>
-  </el-container>
+    </div>
+    <foot-html></foot-html>
+  </div>
 </template>
 <script>
 import { AddNum } from "@/api/interface/home";

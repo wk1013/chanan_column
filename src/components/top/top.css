@@ -1,0 +1,257 @@
+blockquote,
+body,
+dd,
+div,
+dl,
+dt,
+fieldset,
+figcaption,
+figure,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+li,
+ol,
+p,
+pre,
+td,
+textarea,
+th,
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+img {
+  border: none;
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+  color: #333;
+  transition: 0.3s;
+}
+
+/*form*/
+
+button,
+fieldset,
+input,
+option,
+select,
+textarea {
+  outline: 0;
+  vertical-align: middle;
+}
+
+input[type="text"],
+input[type="password"] {
+  padding-left: 5px;
+  box-sizing: border-box;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="button"] {
+  font-family: "Microsoft YaHei";
+}
+
+ul li {
+  box-sizing: border-box;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+input[type="password"]::-ms-reveal {
+  display: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: 0 0;
+  font-family: "Microsoft YaHei";
+}
+
+textarea {
+  resize: none;
+  padding: 5px !important;
+  line-height: 24px;
+  font-family: "Microsoft YaHei";
+}
+
+/* 顶部样式 */
+.top {
+  height: 70px;
+}
+.top.common-top {
+  background-image: linear-gradient(to right, #4564ee, #429afc);
+}
+.top.transparent-top {
+  background: transparent;
+}
+.wrapper {
+  width: 1200px;
+  margin: 0 auto;
+}
+.logo {
+  padding-top: 18px;
+  float: left;
+}
+.logo img {
+  margin-right: 10px;
+  float: left;
+}
+.logo .divide-line {
+  height: 18px;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.25);
+  margin-top: 10px;
+  float: left;
+}
+.logo .logo-name {
+  float: left;
+  margin-top: 3px;
+  font-size: 20px;
+  color: #fff;
+  padding-left: 12px;
+}
+.navs {
+  margin-left: 74px;
+  float: left;
+}
+.navs ul {
+  display: flex;
+}
+.navs ul li.active {
+  background: #4382f5;
+}
+.navs ul li a {
+  display: inline-block;
+  height: 70px;
+  line-height: 70px;
+  color: #fff;
+  font-size: 16px;
+  padding: 0px 20px;
+}
+.ca-search {
+  width: 294px;
+  height: 38px;
+  margin-top: 16px;
+  border-radius: 19px;
+  margin-left: 63px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  float: left;
+}
+.ca-search .el-dropdown-link {
+  cursor: pointer;
+  color: #333;
+  width: 47px;
+  display: inline-block;
+}
+.ca-search .divide-line {
+  width: 1px;
+  height: 25px;
+  background: #ccc;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.ca-search .search-box {
+  display: flex;
+  align-items: center;
+}
+.ca-search .search-box input {
+  height: 38px;
+  border: none;
+  font-size: 14px;
+}
+.ca-search .search-box input::-webkit-input-placeholder {
+  color: #999;
+}
+.ca-search .search-box input:-moz-placeholder {
+  color: #999;
+}
+.ca-search .search-box input::-moz-placeholder {
+  color: #999;
+}
+.ca-search .search-box input:-ms-input-placeholder {
+  color: #999;
+}
+.ca-search .search-box .iconsearch {
+  font-size: 22px;
+  color: #999;
+  cursor: pointer;
+  margin-left: 5px;
+}
+.personal-info {
+  display: flex;
+  align-items: center;
+  float: right;
+  margin-top: 18px;
+}
+.personal-info .avatar-box {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.personal-info .avatar-box img {
+  width: 100%;
+  height: 100%;
+}
+.personal-info .el-dropdown-link {
+  cursor: pointer;
+  color: #fff;
+  font-size: 12px;
+  margin-left: 6px;
+  width: 101px;
+  overflow: hidden;
+}
+.el-dropdown-items .el-dropdown-menu__item {
+  padding: 0px;
+}
+.el-dropdown-items .el-dropdown-menu__item a {
+  display: flex;
+  padding: 8px 29px;
+  align-items: center;
+}
+.el-dropdown-items .el-dropdown-menu__item span {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+}
+.el-dropdown-items .el-dropdown-menu__item .suggestion {
+  background: #9d78cd;
+}
+.el-dropdown-items .el-dropdown-menu__item .backstage {
+  background: #3f9aee;
+}
+.el-dropdown-items .el-dropdown-menu__item .logout {
+  background: #f0cb00;
+}
+.el-dropdown-items .el-dropdown-menu__item .iconfont {
+  font-size: 16px;
+  margin: 0px;
+  color: #fff;
+}

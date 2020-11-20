@@ -1,6 +1,7 @@
 <template>
-  <el-container class="container-panel">
-    <el-main class="main-panel">
+  <div class="main">
+    <top-html type="common"></top-html>
+    <div class="container-panel">
       <div class="body">
         <div class="header flex">
           <h1
@@ -156,8 +157,9 @@
         >
         </check-members>
       </div>
-    </el-main>
-  </el-container>
+    </div>
+    <foot-html></foot-html>
+  </div>
 </template>
 <script>
 import {

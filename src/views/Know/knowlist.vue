@@ -1,6 +1,7 @@
 <template>
-  <el-container class="container-panel">
-    <el-main class="main-panel">
+  <div class="main">
+    <top-html type="common"></top-html>
+    <div class="container-panel">
       <div class="body">
         <el-breadcrumb separator-class="el-icon-arrow-right">
           <el-breadcrumb-item :to="{ path: '/' }" replace
@@ -97,8 +98,9 @@
           </el-pagination>
         </div>
       </div>
-    </el-main>
-  </el-container>
+    </div>
+    <foot-html></foot-html>
+  </div>
 </template>
 <script>
 import { SearchKnowledge, DeleteKnow, DeleteNum } from "@/api/interface/home";
