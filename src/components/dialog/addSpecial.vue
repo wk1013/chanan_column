@@ -89,6 +89,7 @@
 </template>
 <script>
 import { addSpecial } from "@/api/interface/home";
+import { addColumn } from "@/api/interface/column";
 
 export default {
   data() {
@@ -101,6 +102,7 @@ export default {
       inputValue: "",
       personVisible: false,
       imageUrl: "",
+      // action: "http://39.99.207.216:8091/file/upload",
       action: "/column/file/upload",
       department: "技术部门",
       isDisable: false,
@@ -202,22 +204,41 @@ export default {
         params.themeName = this.dynamicTags ? this.dynamicTags.toString() : "";
       }
       this.isDisable = true;
-      addSpecial(params)
-        .then((json) => {
-          this.isDisable = false;
-          if (json.success) {
-            this.$message.success("创建专栏成功");
-            this.personVisible = false;
-            this.getClear(0);
-            this.$emit("confirm", this.radio);
-          } else {
+      if (this.addflag) {
+        addColumn(params)
+          .then((json) => {
+            this.isDisable = false;
+            if (json.success) {
+              this.$message.success("创建专栏成功");
+              this.personVisible = false;
+              this.getClear(0);
+              this.$emit("confirm", this.radio);
+            } else {
+              this.$message.error(json.message);
+            }
+          })
+          .catch((json) => {
+            this.isDisable = false;
             this.$message.error(json.message);
-          }
-        })
-        .catch((json) => {
-          this.isDisable = false;
-          this.$message.error(json.message);
-        });
+          });
+      } else {
+        addSpecial(params)
+          .then((json) => {
+            this.isDisable = false;
+            if (json.success) {
+              this.$message.success("创建专栏成功");
+              this.personVisible = false;
+              this.getClear(0);
+              this.$emit("confirm", this.radio);
+            } else {
+              this.$message.error(json.message);
+            }
+          })
+          .catch((json) => {
+            this.isDisable = false;
+            this.$message.error(json.message);
+          });
+      }
     },
 
     //关闭弹框

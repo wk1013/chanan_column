@@ -12,6 +12,9 @@ export const getCancelTSV = params => axios.put('/backstage/spe/cancel/tsv', par
 //专栏排序
 export const getOrder = params => axios.put('/backstage/spe/orderUpTen', params)
 
+//后台创建专栏
+export const addColumn = params => axios.post('/spe/save', params);
+
 //获取专栏信息
 export const getColumnItem = params => axios.get('/backstage/spe/edit/' + params, null)
 
@@ -24,5 +27,6 @@ export default {
   getCancelTSV,
   getOrder,
   getColumnItem,
-  EditColumn
+  EditColumn,
+  addColumn
 }

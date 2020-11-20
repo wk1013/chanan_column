@@ -4,7 +4,7 @@ import axios from '../instance';
 export const getSpecial = params => axios.get('/spe/list', { params, });
 
 //创建专栏
-export const addSpecial = params => axios.post('/spe/save', params);
+export const addSpecial = params => axios.post('/review/save', params);
 
 //获取专栏详情
 export const getSpecialDetail = params => axios.get('/spe/info', { params });
