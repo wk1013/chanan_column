@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <top-html type="common"></top-html>
+    <top-html type="common" />
     <div class="container-panel">
       <div class="body">
         <div class="header flex">
@@ -158,7 +158,7 @@
         </check-members>
       </div>
     </div>
-    <foot-html></foot-html>
+    <foot-html />
   </div>
 </template>
 <script>

@@ -54,7 +54,7 @@
           >
         </div>
       </div>
-      <div style="padding: 16px 16px 0 16px">
+      <div v-if="item.specialList.length > 0" style="padding: 16px 16px 0 16px">
         <div
           class="list-item flex"
           style="margin-bottom: 20px"
@@ -69,6 +69,9 @@
             >{{ i.name }}</span
           >
         </div>
+      </div>
+      <div v-else class="font-s14 color3" style="padding: 16px">
+        暂无相关专栏知识
       </div>
     </div>
   </div>

@@ -6,9 +6,7 @@
     width="700px"
     :before-close="cancel"
   >
-    <span slot="title" class="el-dialog__title">
-      <span class="font-s16 color3">新建专栏</span>
-    </span>
+    <span slot="title" class="el-dialog__title">新建专栏</span>
     <div class="dialog-con1">
       <div class="dialog-radio">
         <span class="font-s14 color3" style="margin-right: 10px"
@@ -79,11 +77,9 @@
     </div>
     <span slot="footer" class="dialog-footer">
       <el-button type="primary" @click="confirm" round :disabled="isDisable">{{
-        addflag ? "确定" : "提交审核"
+        addflag ? "确 定" : "提交审核"
       }}</el-button>
-      <el-button @click="cancel" round style="margin-left: 30px"
-        >取 消</el-button
-      >
+      <el-button @click="cancel" round>取 消</el-button>
     </span>
   </el-dialog>
 </template>

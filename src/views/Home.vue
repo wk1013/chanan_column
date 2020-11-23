@@ -1,6 +1,7 @@
 <template>
   <div class="main">
-    <top-html type="common"></top-html>
+    <top-html type="common" />
+    <!-- <top type="common" /> -->
     <div class="container-panel">
       <div class="body">
         <div class="header flex">
@@ -91,7 +92,8 @@
         @cancel="cancel"
       ></add-special>
     </div>
-    <foot-html></foot-html>
+    <foot-html />
+    <!-- <common-footer /> -->
   </div>
 </template>
 <script>

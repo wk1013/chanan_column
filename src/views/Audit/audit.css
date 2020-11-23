@@ -1,0 +1,159 @@
+.el-dialog {
+  border-radius: 16px;
+}
+
+.el-dialog__title {
+  font-size: 16px;
+  color: #333;
+}
+
+.el-dialog__header {
+  border-bottom: 1px solid #ddd;
+}
+
+.el-dialog__footer {
+  text-align: center;
+}
+
+.el-button--primary {
+  background-color: #3d8cfc;
+  border-color: #3d8cfc;
+}
+
+.el-button + .el-button {
+  margin-left: 30px;
+}
+
+.audit-body {
+  padding-right: 30px;
+  border-right: 1px solid #ddd;
+}
+
+.dialog-audit {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.audit-item {
+  display: flex;
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 35px;
+}
+
+.audit-item:last-child {
+  margin-bottom: 0;
+}
+
+.audit-span {
+  margin-right: 25px;
+  width: 70px;
+  text-align: right;
+}
+
+.audit-item p {
+  width: 450px;
+  line-height: 26px;
+}
+
+.el-textarea {
+  width: 450px;
+}
+
+.avatar {
+  width: 160px;
+  height: 120px;
+  border-radius: 6px;
+}
+
+.audit-file {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.audit-file:hover {
+  color: #367fff;
+}
+
+.audit-file span {
+  margin-left: 5px;
+}
+
+.icon-s {
+  width: 18px;
+  height: 22px;
+}
+
+.audit-list {
+  padding-left: 30px;
+}
+
+.audit-list h1 {
+  font-size: 16px;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 35px;
+}
+
+.audit-list h1 i {
+  width: 3px;
+  height: 15px;
+  background-color: #367fff;
+  margin-right: 10px;
+}
+
+.el-timeline {
+  height: 450px;
+}
+
+.timeline-item div {
+  font-size: 16px;
+  color: #fff;
+  background-color: #c0c3c9;
+  padding: 4px 14px;
+  border-radius: 4px;
+  display: inline-block;
+  position: relative;
+}
+
+.over {
+  color: #367fff;
+  font-size: 16px;
+}
+
+.box-left {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent;
+  border-right: 10px solid #c0c3c9;
+  border-bottom: 5px solid transparent;
+  position: absolute;
+  left: -6px;
+  top: 10px;
+}
+
+.timeline-item .active {
+  background-color: #367fff;
+}
+
+.timeline-item .active .box-left {
+  border-right: 10px solid #367fff;
+}
+
+.el-scrollbar {
+  height: 100%;
+}
+
+.el-scrollbar__wrap {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.el-scrollbar__thumb {
+  background: #ddd;
+}

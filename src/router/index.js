@@ -10,6 +10,7 @@ const KnowList = () => import('@/views/Know/knowlist.vue');
 const Column = () => import('@/views/Column/column.vue');
 const KnowUpload = () => import('@/views/Know/knowupload.vue');
 const UserColumn = () => import('@/views/User/userspecial.vue');
+const AuditColumn = () => import('@/views/Audit/audit.vue');
 
 Vue.use(VueRouter);
 
@@ -63,6 +64,11 @@ const routes = [
     path: '/personal/column',
     name: 'usercolumn',
     component: UserColumn
+  },
+  {
+    path: '/personal/column_audit',
+    name: '/auditcolumn',
+    component: AuditColumn
   }
 ];
 
@@ -74,5 +80,4 @@ const VueRouterPush = VueRouter.prototype.push
 VueRouter.prototype.push = function push(to) {
   return VueRouterPush.call(this, to).catch(err => err)
 }
-
 export default router;

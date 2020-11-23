@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <top-html type="common"></top-html>
+    <top-html type="common" />
     <div class="container-panel">
       <div class="body" style="padding-bottom: 30px">
         <el-breadcrumb separator-class="el-icon-arrow-right">
@@ -26,7 +26,7 @@
         </div>
       </div>
     </div>
-    <foot-html></foot-html>
+    <foot-html />
   </div>
 </template>
 <script>
