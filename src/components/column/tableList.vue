@@ -212,7 +212,7 @@ export default {
         .catch(() => {});
     },
 
-    //编辑专栏
+    //编辑专栏前获取专栏信息
     Edit(data) {
       if (this.isDisable) {
         return false;
@@ -236,7 +236,7 @@ export default {
   },
 };
 </script>
-<style>
+<style scoped>
 .el-table .odd-row {
   background-color: #f5f5f5;
 }

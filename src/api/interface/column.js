@@ -10,16 +10,16 @@ export const getTSV = params => axios.put('/backstage/spe/tsv', params);
 export const getCancelTSV = params => axios.put('/backstage/spe/cancel/tsv', params);
 
 //专栏排序
-export const getOrder = params => axios.put('/backstage/spe/orderUpTen', params)
+export const getOrder = params => axios.put('/backstage/spe/orderUpTen', params);
+
+//获取专栏信息
+export const getColumnItem = params => axios.get('/backstage/spe/edit/' + params, null);
+
+//编辑专栏
+export const EditColumn = params => axios.put('/backstage/spe/edit/save', params);
 
 //后台创建专栏
 export const addColumn = params => axios.post('/spe/save', params);
-
-//获取专栏信息
-export const getColumnItem = params => axios.get('/backstage/spe/edit/' + params, null)
-
-//编辑专栏
-export const EditColumn = params => axios.put('/backstage/spe/edit/save', params)
 
 export default {
   getColumn,

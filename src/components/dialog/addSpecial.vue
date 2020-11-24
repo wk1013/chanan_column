@@ -9,7 +9,7 @@
     <span slot="title" class="el-dialog__title">新建专栏</span>
     <div class="dialog-con1">
       <div class="dialog-radio">
-        <span class="font-s14 color3" style="margin-right: 10px"
+        <span class="font-s14 color3" style="margin-right: 25px"
           >知识专栏：</span
         >
         <el-radio-group v-model="radio" @change="change">
@@ -19,15 +19,15 @@
       </div>
       <div class="dialog-item">
         <span class="font-s14 color3">专栏名称：</span>
-        <el-input v-model.trim="title" placeholder="请输入内容"></el-input>
+        <el-input v-model.trim="title" placeholder="请输入专栏名称"></el-input>
       </div>
-      <div class="dialog-item" style="align-items: baseline">
+      <div class="dialog-item" style="align-items: flex-start">
         <span class="font-s14 color3">专栏简介：</span>
         <el-input
           type="textarea"
           :rows="4"
           v-model.trim="introduce"
-          placeholder="请输入内容"
+          placeholder="请输入专栏简介"
         ></el-input>
       </div>
       <div class="dialog-item" v-show="personVisible">
@@ -61,7 +61,7 @@
           {{ tag }}
         </el-tag>
       </div>
-      <div class="dialog-item" style="align-items: start; margin-bottom: 0">
+      <div class="dialog-item" style="align-items: flex-start">
         <span class="font-s14 color3">上传封面：</span>
         <el-upload
           class="avatar-uploader"
@@ -98,7 +98,6 @@ export default {
       inputValue: "",
       personVisible: false,
       imageUrl: "",
-      // action: "http://39.99.207.216:8091/file/upload",
       action: "/column/file/upload",
       department: "技术部门",
       isDisable: false,

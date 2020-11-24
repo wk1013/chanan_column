@@ -434,7 +434,7 @@ textarea {
 
 .iconV {
   font-size: 20px;
-  color: #1972ef;
+  color: #fcb842;
   position: absolute;
   right: 0;
   bottom: 5px;
@@ -470,8 +470,12 @@ textarea {
   align-items: center;
 }
 
+.dialog-item:last-child {
+  margin-bottom: 0;
+}
+
 .dialog-item span {
-  margin-right: 10px;
+  margin-right: 25px;
 }
 
 .dialog-item .el-input {

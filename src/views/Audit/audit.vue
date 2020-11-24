@@ -2,7 +2,7 @@
   <el-dialog
     class="detail-dialog"
     :close-on-click-modal="false"
-    :visible="visible"
+    :visible="true"
     width="900px"
     :before-close="cancel"
   >
@@ -11,7 +11,7 @@
       <div class="audit-body">
         <div class="audit-item">
           <span class="audit-span">专栏类型：</span>
-          <span>{{ options.type }}</span>
+          <span>{{ options.columnType == 0 ? "主题专栏" : "人物专栏" }}</span>
         </div>
         <div class="audit-item">
           <span class="audit-span">专栏名称：</span>
@@ -36,7 +36,7 @@
           <span class="audit-span">查看文档：</span>
           <div class="audit-file">
             <svg class="icon icon-s" aria-hidden="true">
-              <use :xlink:href="fileIconL(options.file)" />
+              <use :xlink:href="fileIcon(options.file)" />
             </svg>
             <span>{{ options.file }}</span>
           </div>
@@ -67,7 +67,9 @@
                   <i class="box-left"></i>
                 </div>
                 <p style="color: #666; line-height: 20px">{{ item.date }}</p>
-                <p style="color: #333; line-height: 24px">{{ item.text }}</p>
+                <p style="color: #333; line-height: 24px; padding-right: 10px">
+                  {{ item.text }}
+                </p>
               </div>
               <div v-else class="over">结束审批流程</div>
             </el-timeline-item>
@@ -85,11 +87,12 @@
 </template>
 <script>
 import { formatList } from "@/utils/index";
+import { getMyToBeDone, getMyAudit } from "@/api/interface/home";
 
 export default {
   data() {
     return {
-      visible: true,
+      id: this.$route.query.sysId,
       isDisable: false,
       radio: 0,
       opinion: "",
@@ -100,7 +103,7 @@ export default {
         sysId: "",
         imgUrl: "",
         file: "电子文档.doc",
-        type: "发动机类圈子",
+        columnType: 0,
       },
       activities: [
         {
@@ -128,6 +131,12 @@ export default {
           text: "待审：李志勇",
         },
         {
+          title: "四审",
+          active: false,
+          date: "2020-12-06 12:30",
+          text: "待审：李志勇",
+        },
+        {
           over: true,
           active: true,
         },
@@ -138,9 +147,24 @@ export default {
     this.init();
   },
   methods: {
-    init() {},
+    init() {
+      getMyToBeDone({
+        sysId: this.id,
+      })
+        .then((json) => {
+          if (json.success) {
+            this.options = json.content;
+          } else {
+            this.$message.error(json.message);
+          }
+        })
+        .catch((json) => {
+          this.$message.error(json.message);
+        });
+    },
 
-    fileIconL(file) {
+    //获取文件图标
+    fileIcon(file) {
       const fileFormat = file.substr(file.lastIndexOf(".") + 1);
       for (let key in formatList) {
         for (let index in formatList[key]) {
@@ -151,11 +175,40 @@ export default {
       }
     },
 
-    //确定提交
-    confirm() {},
+    //审核
+    confirm() {
+      if (this.isDisable) {
+        return false;
+      } else {
+        this.isDisable = true;
+        let params = {
+          auditStatus: this.radio,
+          sysId: this.id,
+          opinions: this.opinion,
+        };
+        getMyAudit(params)
+          .then((json) => {
+            this.isDisable = false;
+            if (json.success) {
+              this.$message.success(json.message);
+              var info = { status: "success" };
+              window.parent.postMessage(info, "*");
+            } else {
+              this.$message.error(json.message);
+            }
+          })
+          .catch((json) => {
+            this.isDisable = false;
+            this.$message.error(json.message);
+          });
+      }
+    },
 
     //关闭弹框
-    cancel() {},
+    cancel() {
+      var info = { status: "cancel" };
+      window.parent.postMessage(info, "*");
+    },
   },
 };
 </script>

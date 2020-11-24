@@ -10,15 +10,15 @@
     <div class="dialog-con1">
       <div class="dialog-item">
         <span class="font-s14 color3">专栏名称：</span>
-        <el-input v-model.trim="title" placeholder="请输入内容"></el-input>
+        <el-input v-model.trim="title" placeholder="请输入专栏名称"></el-input>
       </div>
-      <div class="dialog-item" style="align-items: baseline">
+      <div class="dialog-item" style="align-items: flex-start">
         <span class="font-s14 color3">专栏简介：</span>
         <el-input
           type="textarea"
           :rows="4"
           v-model.trim="introduce"
-          placeholder="请输入内容"
+          placeholder="请输入专栏简介"
         ></el-input>
       </div>
       <div class="dialog-item">
@@ -52,7 +52,7 @@
           >添加新领域</el-button
         >
       </div>
-      <div class="dialog-item" style="align-items: start; margin-bottom: 0">
+      <div class="dialog-item" style="align-items: flex-start">
         <span class="font-s14 color3">上传封面：</span>
         <el-upload
           class="avatar-uploader"
@@ -61,7 +61,7 @@
           :on-success="handleAvatarSuccess"
           :before-upload="beforeAvatarUpload"
         >
-          <img v-if="imageUrl" :src="imageUrl" class="avatar" />
+          <img v-if="imgUrl" :src="imgUrl" class="avatar" />
           <i v-else class="el-icon-plus avatar-uploader-icon"></i>
         </el-upload>
       </div>
@@ -84,11 +84,10 @@ export default {
       title: "",
       introduce: "",
       id: "",
-      imageUrl: "",
+      imgUrl: "",
       dynamicTags: [],
       inputVisible: false,
       inputValue: "",
-      department: "",
       isDisable: false,
       action: "/column/file/upload",
     };
@@ -100,8 +99,7 @@ export default {
       this.introduce = val.introduce;
       this.id = val.sysId;
       this.dynamicTags = val.themeName ? val.themeName.split(",") : [];
-      this.department = val.createUserDepart;
-      this.imageUrl = val.imgUrl;
+      this.imgUrl = val.imgUrl;
     },
   },
   props: {
@@ -116,7 +114,6 @@ export default {
           introduce: "",
           sysId: "",
           themeName: "",
-          createUserDepart: "",
           imgUrl: "",
         };
       },
@@ -153,13 +150,12 @@ export default {
         this.$message.error("上传封面失败");
         return;
       }
-      this.imageUrl = file.message;
+      this.imgUrl = file.message;
     },
     beforeAvatarUpload(file) {
       const formatList = ["image/jpeg", "image/png", "image/jpg"];
       const isJPG = formatList.indexOf(file.type) > -1;
       const isLt2M = file.size / 1024 / 1024 < 4;
-
       if (!isJPG) {
         this.$message.error("上传封面只能是 JPG,PNG 格式!");
       }
@@ -188,9 +184,7 @@ export default {
           title: this.title,
           introduce: this.introduce,
           themeName: this.dynamicTags ? this.dynamicTags.toString() : "",
-          imgUrl: this.imageUrl,
-          updateUserId: "",
-          updateUserName: "",
+          imgUrl: this.imgUrl,
         };
         EditSpecialDetail(params)
           .then((json) => {
@@ -213,7 +207,7 @@ export default {
           title: this.title,
           introduce: this.introduce,
           themeName: this.dynamicTags ? this.dynamicTags.toString() : "",
-          imgUrl: this.imageUrl,
+          imgUrl: this.imgUrl,
         };
         EditColumn(params)
           .then((json) => {

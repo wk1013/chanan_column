@@ -14,7 +14,6 @@
             aria-hidden="true"
             class="icon iconV"
             v-show="item.IsVip == 1"
-            style="color: #fcb842"
           >
             <use xlink:href="#iconvipdiamond-f" />
           </svg>
