@@ -11,6 +11,7 @@ const Column = () => import('@/views/Column/column.vue');
 const KnowUpload = () => import('@/views/Know/knowupload.vue');
 const UserColumn = () => import('@/views/User/userspecial.vue');
 const AuditColumn = () => import('@/views/Audit/audit.vue');
+const AuditDoneColumn = () => import('@/views/Audit/auditdone.vue');
 
 Vue.use(VueRouter);
 
@@ -69,7 +70,12 @@ const routes = [
     path: '/personal/column_audit',
     name: '/auditcolumn',
     component: AuditColumn
-  }
+  },
+  {
+    path: '/personal/column_audit_done',
+    name: '/auditdonecolumn',
+    component: AuditDoneColumn
+  },
 ];
 
 const router = new VueRouter({

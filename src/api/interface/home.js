@@ -1,8 +1,5 @@
 import axios from '../instance';
 
-//获取用户信息
-export const getUserInfo = params => axios.post('/spe/getUserInfo', params);
-
 // 获取专栏列表
 export const getSpecial = params => axios.get('/spe/list', { params, });
 
@@ -33,9 +30,6 @@ export const AddNum = params => axios.post('/sub/addNum', params);
 //减少知识数
 export const DeleteNum = params => axios.post('/sub/lessNum', params);
 
-//个人中心专栏订阅列表
-export const getUserSpecial = params => axios.get('/sub/list', { params });
-
 //设置权限
 export const getPower = params => axios.post('/colPower/setColPower', params);
 
@@ -45,14 +39,7 @@ export const getUserList = params => axios.get('/colPower/selectColPower', { par
 //创建专栏
 export const addSpecial = params => axios.post('/review/save', params);
 
-//获取我的待办详情
-export const getMyToBeDone = params => axios.get('/review/myToDo', { params });
-
-//待办审批
-export const getMyAudit = params => axios.post('/review/approval', params);
-
 export default {
-  getUserInfo,
   getSpecial,
   getSpecialDetail,
   EditSpecialDetail,
@@ -63,10 +50,7 @@ export default {
   DeleteSubscribe,
   AddNum,
   DeleteNum,
-  getUserSpecial,
   getPower,
   getUserList,
   addSpecial,
-  getMyToBeDone,
-  getMyAudit
 }

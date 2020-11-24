@@ -95,7 +95,7 @@
   </div>
 </template>
 <script>
-import { getUserInfo } from "@/api/interface/home";
+import { getUserInfo } from "@/api/interface/user";
 
 export default {
   name: "top",

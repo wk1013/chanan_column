@@ -53,7 +53,7 @@
   </div>
 </template>
 <script>
-import { getUserSpecial } from "@/api/interface/home";
+import { getUserSpecial } from "@/api/interface/user";
 import Speciallist from "@/components/user/speciallist.vue";
 import Personlist from "@/components/user/personlist.vue";
 

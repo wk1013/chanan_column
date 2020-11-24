@@ -25,31 +25,6 @@
           <span class="audit-span">专栏封面：</span>
           <img :src="options.imgUrl" class="avatar" />
         </div>
-        <div class="audit-item">
-          <span class="audit-span">审批：</span>
-          <el-radio-group v-model="radio">
-            <el-radio :label="0">通过</el-radio>
-            <el-radio :label="1">驳回</el-radio>
-          </el-radio-group>
-        </div>
-        <div class="audit-item">
-          <span class="audit-span">查看文档：</span>
-          <div class="audit-file">
-            <svg class="icon icon-s" aria-hidden="true">
-              <use :xlink:href="fileIcon(options.file)" />
-            </svg>
-            <span>{{ options.file }}</span>
-          </div>
-        </div>
-        <div class="audit-item">
-          <span class="audit-span">审批意见：</span>
-          <el-input
-            type="textarea"
-            :rows="4"
-            v-model.trim="opinion"
-            placeholder="请输入审批意见"
-          ></el-input>
-        </div>
       </div>
       <div class="audit-list">
         <h1><i></i>审批流程</h1>
@@ -77,34 +52,18 @@
         </el-timeline>
       </div>
     </div>
-    <span slot="footer" class="dialog-footer">
-      <el-button type="primary" @click="confirm" round :disabled="isDisable"
-        >确 定
-      </el-button>
-      <el-button @click="cancel" round>取 消</el-button>
-    </span>
   </el-dialog>
 </template>
 <script>
-import { formatList } from "@/utils/index";
-import { getMyToBeDone, getMyAudit } from "@/api/interface/user";
+import { getMyInitiative, getMyHandled } from "@/api/interface/user";
 
 export default {
   data() {
     return {
       id: this.$route.query.sysId,
+      type: this.$route.query.auditType,
       isDisable: false,
-      radio: 0,
-      opinion: "",
-      options: {
-        title: "发动机类圈子自动变速器档位",
-        introduce:
-          "对于汽车而言，NVH问题是处处存在的，根据问题产生的来源又可分为发动机NVH、车身NVH和底盘NVH三大部分，进一步还可细分为空气动力NVH、空调系统NVH、道路行驶NVH、制动系统NVH等。",
-        sysId: "",
-        imgUrl: "",
-        file: "电子文档.doc",
-        columnType: 0,
-      },
+      options: {},
       activities: [
         {
           title: "开始",
@@ -147,58 +106,36 @@ export default {
     this.init();
   },
   methods: {
+    //获取待办详情
     init() {
-      getMyToBeDone({
-        sysId: this.id,
-      })
-        .then((json) => {
-          if (json.success) {
-            this.options = json.content;
-          } else {
-            this.$message.error(json.message);
-          }
-        })
-        .catch((json) => {
-          this.$message.error(json.message);
-        });
-    },
-
-    //获取文件图标
-    fileIcon(file) {
-      const fileFormat = file.substr(file.lastIndexOf(".") + 1);
-      for (let key in formatList) {
-        for (let index in formatList[key]) {
-          if (formatList[key][index] === fileFormat) {
-            return `#icon${key}-s`;
-          }
-        }
-      }
-    },
-
-    //审核
-    confirm() {
-      if (this.isDisable) {
-        return false;
-      } else {
-        this.isDisable = true;
-        let params = {
-          auditStatus: this.radio,
+      if (this.type == 0) {
+        //我的发起
+        getMyInitiative({
           sysId: this.id,
-          opinions: this.opinion,
-        };
-        getMyAudit(params)
+        })
           .then((json) => {
-            this.isDisable = false;
             if (json.success) {
-              this.$message.success(json.message);
-              var info = { status: "success" };
-              window.parent.postMessage(info, "*");
+              this.options = json.content;
             } else {
               this.$message.error(json.message);
             }
           })
           .catch((json) => {
-            this.isDisable = false;
+            this.$message.error(json.message);
+          });
+      } else {
+        //我的已处理
+        getMyHandled({
+          sysId: this.id,
+        })
+          .then((json) => {
+            if (json.success) {
+              this.options = json.content;
+            } else {
+              this.$message.error(json.message);
+            }
+          })
+          .catch((json) => {
             this.$message.error(json.message);
           });
       }
