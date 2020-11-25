@@ -34,7 +34,6 @@
 .dialog-audit {
   display: flex;
   align-items: center;
-  justify-content: space-between;
 }
 
 .audit-item {
@@ -90,6 +89,7 @@
 
 .audit-list {
   padding-left: 30px;
+  width: 28%;
 }
 
 .audit-list h1 {
@@ -109,7 +109,7 @@
 }
 
 .el-timeline {
-  height: 350px;
+  height: 300px;
 }
 
 .timeline-item div {

@@ -6,7 +6,7 @@
     width="900px"
     :before-close="cancel"
   >
-    <span slot="title" class="el-dialog__title">创建专栏申请</span>
+    <span slot="title" class="el-dialog__title">专栏审核</span>
     <div class="dialog-audit">
       <div class="audit-body">
         <div class="audit-item">
@@ -28,18 +28,9 @@
         <div class="audit-item">
           <span class="audit-span">审批：</span>
           <el-radio-group v-model="radio">
-            <el-radio :label="0">通过</el-radio>
-            <el-radio :label="1">驳回</el-radio>
+            <el-radio :label="1">通过</el-radio>
+            <el-radio :label="2">驳回</el-radio>
           </el-radio-group>
-        </div>
-        <div class="audit-item">
-          <span class="audit-span">查看文档：</span>
-          <div class="audit-file">
-            <svg class="icon icon-s" aria-hidden="true">
-              <use :xlink:href="fileIcon(options.file)" />
-            </svg>
-            <span>{{ options.file }}</span>
-          </div>
         </div>
         <div class="audit-item">
           <span class="audit-span">审批意见：</span>
@@ -48,11 +39,11 @@
             :rows="4"
             v-model.trim="opinion"
             placeholder="请输入审批意见"
-          ></el-input>
+          />
         </div>
       </div>
       <div class="audit-list">
-        <h1><i></i>审批流程</h1>
+        <h1><i />审批流程</h1>
         <el-timeline>
           <el-scrollbar>
             <el-timeline-item
@@ -64,7 +55,7 @@
               <div v-if="!item.over" class="timeline-item">
                 <div :class="{ active: item.active }">
                   {{ item.title }}
-                  <i class="box-left"></i>
+                  <i class="box-left" />
                 </div>
                 <p style="color: #666; line-height: 20px">{{ item.date }}</p>
                 <p style="color: #333; line-height: 24px; padding-right: 10px">
@@ -94,53 +85,10 @@ export default {
     return {
       id: this.$route.query.sysId,
       isDisable: false,
-      radio: 0,
+      radio: 1,
       opinion: "",
-      options: {
-        title: "发动机类圈子自动变速器档位",
-        introduce:
-          "对于汽车而言，NVH问题是处处存在的，根据问题产生的来源又可分为发动机NVH、车身NVH和底盘NVH三大部分，进一步还可细分为空气动力NVH、空调系统NVH、道路行驶NVH、制动系统NVH等。",
-        sysId: "",
-        imgUrl: "",
-        file: "电子文档.doc",
-        columnType: 0,
-      },
-      activities: [
-        {
-          title: "开始",
-          active: true,
-          date: "2020-12-06 12:30",
-          text: "发起人：刘旭",
-        },
-        {
-          title: "一审",
-          active: true,
-          date: "2020-12-06 12:30",
-          text: "已审：刘旭 审批意见：同意，你做的很好",
-        },
-        {
-          title: "二审",
-          active: false,
-          date: "2020-12-06 12:30",
-          text: "待审：李志勇",
-        },
-        {
-          title: "三审",
-          active: false,
-          date: "2020-12-06 12:30",
-          text: "待审：李志勇",
-        },
-        {
-          title: "四审",
-          active: false,
-          date: "2020-12-06 12:30",
-          text: "待审：李志勇",
-        },
-        {
-          over: true,
-          active: true,
-        },
-      ],
+      options: {},
+      activities: [],
     };
   },
   created() {
@@ -154,6 +102,34 @@ export default {
         .then((json) => {
           if (json.success) {
             this.options = json.content;
+            if (json.content) {
+              let data = [];
+              data.push({
+                title: "开始",
+                active: true,
+                date: json.content.startTime,
+                text: `发起人：${json.content.sponsor}`,
+              });
+              data.push({
+                title: "一审",
+                active: json.content.auditStatus == 0 ? false : true,
+                date: json.content.auditStatus == 0 ? "" : json.content.endTime,
+                text:
+                  json.content.auditStatus == 0
+                    ? "待审：管理员"
+                    : `已审：${json.content.reviewer} 审批意见：${json.content.opinions}`,
+              });
+              if (
+                json.content.auditStatus == 1 ||
+                json.content.auditStatus == 2
+              ) {
+                data.push({
+                  over: true,
+                  active: true,
+                });
+              }
+              this.activities = data;
+            }
           } else {
             this.$message.error(json.message);
           }
@@ -161,18 +137,6 @@ export default {
         .catch((json) => {
           this.$message.error(json.message);
         });
-    },
-
-    //获取文件图标
-    fileIcon(file) {
-      const fileFormat = file.substr(file.lastIndexOf(".") + 1);
-      for (let key in formatList) {
-        for (let index in formatList[key]) {
-          if (formatList[key][index] === fileFormat) {
-            return `#icon${key}-s`;
-          }
-        }
-      }
     },
 
     //审核
