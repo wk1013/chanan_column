@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <top-html type="common" />
+    <top type="common" />
     <div class="container-panel">
       <div class="body">
         <el-breadcrumb separator-class="el-icon-arrow-right">
@@ -94,12 +94,11 @@
             background
             hide-on-single-page
             style="text-align: center"
-          >
-          </el-pagination>
+          />
         </div>
       </div>
     </div>
-    <foot-html />
+    <common-footer />
   </div>
 </template>
 <script>

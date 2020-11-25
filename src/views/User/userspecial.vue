@@ -14,7 +14,7 @@
             style="margin-right: 30px"
           >
             主题专栏
-            <span v-if="isActive == 0"></span>
+            <span v-if="isActive == 0" />
           </div>
           <div
             :class="[
@@ -26,19 +26,22 @@
             @click="ChangeTab(1)"
           >
             人物专栏
-            <span v-if="isActive == 1"></span>
+            <span v-if="isActive == 1" />
           </div>
         </div>
       </div>
       <div class="button" @click="getNewspecial()">去订阅专栏</div>
     </div>
-    <speciallist :options="options" v-if="isActive == 0" @confirm="init">
-    </speciallist>
+    <speciallist
+      :options="options"
+      v-if="isActive == 0 && !loading"
+      @confirm="init"
+    />
     <personlist
       :options="options"
-      v-if="isActive == 1"
+      v-if="isActive == 1 && !loading"
       @confirm="init"
-    ></personlist>
+    />
     <el-pagination
       @current-change="handleCurrentChange"
       :current-page.sync="currentPage"
@@ -48,8 +51,7 @@
       hide-on-single-page
       background
       style="text-align: center"
-    >
-    </el-pagination>
+    />
   </div>
 </template>
 <script>
@@ -64,6 +66,7 @@ export default {
       options: [],
       currentPage: 1,
       total: 0,
+      loading: true,
     };
   },
   components: {
@@ -82,6 +85,7 @@ export default {
         type: this.isActive,
       })
         .then((json) => {
+          this.loading = false;
           if (json.success) {
             this.total = json.content.total;
             this.options = json.content.data;
@@ -90,6 +94,7 @@ export default {
           }
         })
         .catch((json) => {
+          this.loading = false;
           this.$message.error(json.message);
         });
     },
@@ -98,7 +103,7 @@ export default {
     ChangeTab(index) {
       this.isActive = index;
       this.currentPage = 1;
-      this.options = [];
+      this.loading = true;
       this.init();
     },
 

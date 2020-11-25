@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <top-html type="common" />
+    <top type="common" />
     <div class="container-panel">
       <div class="body">
         <el-breadcrumb separator-class="el-icon-arrow-right">
@@ -20,7 +20,7 @@
               slot="prepend"
               placeholder="请选择"
             >
-              <el-option label="知识" value="1"></el-option>
+              <el-option label="知识" value="1" />
             </el-select>
             <el-button slot="append" type="primary" @click="search"
               >检索</el-button
@@ -121,7 +121,7 @@
               >条结果
             </div>
           </div>
-          <knowlist :options="knowData"></knowlist>
+          <knowlist :options="knowData" v-if="!loading" />
           <el-pagination
             @current-change="handleCurrentChange"
             :current-page.sync="currentPage"
@@ -131,12 +131,11 @@
             background
             hide-on-single-page
             style="text-align: center; margin-top: 30px"
-          >
-          </el-pagination>
+          />
         </div>
       </div>
     </div>
-    <foot-html />
+    <common-footer />
   </div>
 </template>
 <script>
@@ -173,6 +172,7 @@ export default {
       knowData: [],
       isHot: true,
       sysid: "",
+      loading: true,
     };
   },
   created() {
@@ -192,6 +192,7 @@ export default {
         sysId: "",
       })
         .then((json) => {
+          this.loading = false;
           if (json.success) {
             this.knowData = json.content.contentList;
             this.total = json.content.total;
@@ -220,6 +221,7 @@ export default {
           }
         })
         .catch((json) => {
+          this.loading = false;
           this.$message.error(json.message);
         });
     },
@@ -234,6 +236,7 @@ export default {
         sysId: this.sysid,
       })
         .then((json) => {
+          this.loading = false;
           if (json.success) {
             this.knowData = json.content.contentList;
             this.total = json.content.total;
@@ -242,6 +245,7 @@ export default {
           }
         })
         .catch((json) => {
+          this.loading = false;
           this.$message.error(json.message);
         });
     },
@@ -274,6 +278,7 @@ export default {
           id: "",
         },
       ];
+      this.loading = true;
       this.init();
     },
 
@@ -328,6 +333,7 @@ export default {
       this.isHot = true;
       this.currentPage = 1;
       this.sysid = id;
+      this.loading = true;
       this.getKnowledge();
     },
 

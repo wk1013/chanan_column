@@ -1,5 +1,5 @@
 <template>
-  <div class="special">
+  <div class="special" v-if="options.length > 0">
     <div
       class="usercolumn-item"
       v-for="(item, index) in options"
@@ -60,6 +60,7 @@
       </div>
     </div>
   </div>
+  <nothing v-else />
 </template>
 <script>
 import { DeleteSubscribe, getSpecialDetail } from "@/api/interface/home";

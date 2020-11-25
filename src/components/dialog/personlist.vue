@@ -1,5 +1,5 @@
 <template>
-  <div class="special">
+  <div class="special" v-if="options.length > 0">
     <div
       class="special-item"
       v-for="(item, index) in options"
@@ -22,7 +22,7 @@
           class="font-s18 color3"
           style="margin: 12px 0; cursor: pointer"
           v-html="handleTitle(inputKey, item.title)"
-        ></h1>
+        />
         <div class="person-span">
           <span class="font-s16 color3" style="margin-right: 30px">{{
             item.CreateUserDepart
@@ -74,6 +74,7 @@
       </div>
     </div>
   </div>
+  <nothing v-else />
 </template>
 <script>
 import {

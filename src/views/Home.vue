@@ -1,7 +1,6 @@
 <template>
   <div class="main">
-    <top-html type="common" />
-    <!-- <top type="common" /> -->
+    <top type="common" />
     <div class="container-panel">
       <div class="body">
         <div class="header flex">
@@ -19,7 +18,7 @@
                 style="margin-right: 30px"
               >
                 主题专栏
-                <span v-if="isActive == 0"></span>
+                <span v-if="isActive == 0" />
               </div>
               <div
                 :class="[
@@ -31,7 +30,7 @@
                 @click="ChangeTab(1)"
               >
                 人物专栏
-                <span v-if="isActive == 1"></span>
+                <span v-if="isActive == 1" />
               </div>
             </div>
           </div>
@@ -45,9 +44,9 @@
                 @keyup.13.native="search"
               >
                 <el-select v-model="select" slot="prepend" size="small">
-                  <el-option label="知识" value="1"></el-option>
-                  <el-option label="主题" value="2"></el-option>
-                  <el-option label="人物" value="3"></el-option>
+                  <el-option label="知识" value="1" />
+                  <el-option label="主题" value="2" />
+                  <el-option label="人物" value="3" />
                 </el-select>
                 <svg
                   slot="suffix"
@@ -67,13 +66,16 @@
             </div>
           </div>
         </div>
-        <speciallist :options="options" v-if="isActive == 0" @confirm="init">
-        </speciallist>
+        <speciallist
+          :options="options"
+          v-if="isActive == 0 && !loading"
+          @confirm="init"
+        />
         <personlist
           :options="options"
-          v-if="isActive == 1"
+          v-if="isActive == 1 && !loading"
           @confirm="init"
-        ></personlist>
+        />
         <el-pagination
           @current-change="handleCurrentChange"
           :current-page.sync="currentPage"
@@ -83,17 +85,11 @@
           hide-on-single-page
           background
           style="text-align: center"
-        >
-        </el-pagination>
+        />
       </div>
-      <add-special
-        :visible="visible"
-        @confirm="confirm"
-        @cancel="cancel"
-      ></add-special>
+      <add-special :visible="visible" @confirm="confirm" @cancel="cancel" />
     </div>
-    <foot-html />
-    <!-- <common-footer /> -->
+    <common-footer />
   </div>
 </template>
 <script>
@@ -112,6 +108,7 @@ export default {
       currentPage: 1,
       total: 0,
       visible: false,
+      loading: true,
     };
   },
   watch: {
@@ -136,6 +133,7 @@ export default {
         search: "",
       })
         .then((json) => {
+          this.loading = false;
           if (json.success) {
             this.total = json.content.total;
             this.options = json.content.data;
@@ -144,6 +142,7 @@ export default {
           }
         })
         .catch((json) => {
+          this.loading = false;
           this.$message.error(json.message);
         });
     },
@@ -152,7 +151,7 @@ export default {
     getClear(index) {
       this.isActive = index;
       this.currentPage = 1;
-      this.options = [];
+      this.loading = true;
       this.init();
     },
 

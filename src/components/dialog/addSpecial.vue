@@ -19,7 +19,7 @@
       </div>
       <div class="dialog-item">
         <span class="font-s14 color3">专栏名称：</span>
-        <el-input v-model.trim="title" placeholder="请输入专栏名称"></el-input>
+        <el-input v-model.trim="title" placeholder="请输入专栏名称" />
       </div>
       <div class="dialog-item" style="align-items: flex-start">
         <span class="font-s14 color3">专栏简介：</span>
@@ -28,7 +28,7 @@
           :rows="4"
           v-model.trim="introduce"
           placeholder="请输入专栏简介"
-        ></el-input>
+        />
       </div>
       <div class="dialog-item" v-show="personVisible">
         <span class="font-s14 color3">擅长领域：</span>
@@ -40,8 +40,7 @@
           size="small"
           @keyup.enter.native="handleInputConfirm"
           @blur="handleInputConfirm"
-        >
-        </el-input>
+        />
         <el-button
           v-else
           class="button-new-tag"
@@ -71,7 +70,7 @@
           :before-upload="beforeAvatarUpload"
         >
           <img v-if="imageUrl" :src="imageUrl" class="avatar" />
-          <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+          <i v-else class="el-icon-plus avatar-uploader-icon" />
         </el-upload>
       </div>
     </div>

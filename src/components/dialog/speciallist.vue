@@ -1,5 +1,5 @@
 <template>
-  <div class="special">
+  <div class="special" v-if="options.length > 0">
     <div
       class="special-item"
       v-for="(item, index) in options"
@@ -14,7 +14,7 @@
           <span
             class="font-s16 color3 text-ellipsis blod"
             v-html="handleTitle(inputKey, item.title)"
-          ></span>
+          />
           <div
             v-if="!item.isSub"
             class="subscribe"
@@ -60,7 +60,7 @@
           style="margin-bottom: 20px"
           v-for="i in item.specialList"
         >
-          <span class="list-icon"></span>
+          <span class="list-icon" />
           <span
             class="text-ellipsis font-s14 color3"
             style="cursor: pointer"
@@ -75,6 +75,7 @@
       </div>
     </div>
   </div>
+  <nothing v-else />
 </template>
 <script>
 import {

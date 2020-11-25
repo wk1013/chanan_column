@@ -10,16 +10,13 @@ import './assets/iconfont';
 import caTopAndFooter from "ca-top-and-footer";
 import 'ca-top-and-footer/dist/ca-top-and-footer.css';
 
-import TopHtml from "@/components/top/Top.vue";
-import FootHtml from "@/components/commonFooter/CommonFooter.vue"
+import Nothing from "@/components/dialog/nothing.vue";
 
 Vue.use(Element);
 Vue.use(caTopAndFooter);
-Vue.use(TopHtml);
-Vue.use(FootHtml);
+Vue.use(Nothing);
 
-Vue.component('top-html', TopHtml);
-Vue.component('foot-html', FootHtml);
+Vue.component('nothing', Nothing);
 
 Vue.config.productionTip = false;
 
@@ -27,8 +24,7 @@ new Vue({
   router,
   store,
   component: {
-    TopHtml,
-    FootHtml
+    Nothing
   },
   render: h => h(App)
 }).$mount("#app");

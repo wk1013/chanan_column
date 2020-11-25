@@ -1,5 +1,5 @@
 <template>
-  <div class="body-b">
+  <div class="body-b" v-if="options.length > 0">
     <div class="body-item" v-for="(item, index) in options">
       <h1 @click="getKnow(item.guid)" v-html="showData(item.title)" />
       <div class="bi-title">
@@ -13,6 +13,7 @@
       </div>
     </div>
   </div>
+  <nothing v-else />
 </template>
 <script>
 import { showDate } from "@/utils/index.js";

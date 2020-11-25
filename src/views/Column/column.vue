@@ -36,8 +36,7 @@
             :key="item.value"
             :label="item.label"
             :value="item.value"
-          >
-          </el-option>
+          />
         </el-select>
         <el-input
           v-model="serachText"
@@ -63,7 +62,7 @@
       @Edit="Edit"
       @confirm="init"
       @Delete="getDelete"
-    ></table-list>
+    />
     <el-pagination
       @current-change="handleCurrentChange"
       :current-page.sync="currentPage"
@@ -73,30 +72,27 @@
       hide-on-single-page
       background
       style="text-align: center; margin-top: 50px"
-    >
-    </el-pagination>
+    />
     <add-special
       :visible="visible"
       :addflag="true"
       @confirm="confirm"
       @cancel="cancel"
-    ></add-special>
+    />
     <edit-sdetail
       :visible="editSvisible"
       :options="detail"
       :editflag="false"
       @confirm="Editconfirm"
       @cancel="Editcancel"
-    >
-    </edit-sdetail>
+    />
     <edit-person
       :visible="editPvisible"
       :options="detail"
       :editflag="false"
       @confirm="Editconfirm"
       @cancel="Editcancel"
-    >
-    </edit-person>
+    />
   </div>
 </template>
 <script>

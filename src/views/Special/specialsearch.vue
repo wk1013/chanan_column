@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <top-html type="common" />
+    <top type="common" />
     <div class="container-panel">
       <div class="body">
         <el-breadcrumb separator-class="el-icon-arrow-right">
@@ -22,15 +22,19 @@
               slot="prepend"
               placeholder="请选择"
             >
-              <el-option label="主题" value="1"></el-option>
+              <el-option label="主题" value="1" />
             </el-select>
             <el-button slot="append" type="primary" @click="search"
               >检索</el-button
             >
           </el-input>
         </div>
-        <speciallist :options="options" :inputKey="inputText" @confirm="init">
-        </speciallist>
+        <speciallist
+          v-if="!loading"
+          :options="options"
+          :inputKey="inputText"
+          @confirm="init"
+        />
         <el-pagination
           @current-change="handleCurrentChange"
           :current-page.sync="currentPage"
@@ -40,11 +44,10 @@
           hide-on-single-page
           background
           style="text-align: center"
-        >
-        </el-pagination>
+        />
       </div>
     </div>
-    <foot-html />
+    <common-footer />
   </div>
 </template>
 <script>
@@ -59,6 +62,7 @@ export default {
       currentPage: 1,
       total: 0,
       select: "1",
+      loading: true,
     };
   },
   created() {
@@ -77,6 +81,7 @@ export default {
         search: this.inputText,
       })
         .then((json) => {
+          this.loading = false;
           if (json.success) {
             this.total = json.content.total;
             this.options = json.content.data;
@@ -85,6 +90,7 @@ export default {
           }
         })
         .catch((json) => {
+          this.loading = false;
           this.$message.error(json.message);
         });
     },
@@ -94,8 +100,8 @@ export default {
       const query = JSON.parse(JSON.stringify(this.$route.query));
       query.inputText = this.inputText;
       this.$router.replace({ path: this.$route.path, query });
-      this.options = [];
       this.currentPage = 1;
+      this.loading = true;
       this.init();
     },
 

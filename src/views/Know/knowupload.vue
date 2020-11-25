@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <top-html type="common" />
+    <top type="common" />
     <div class="container-panel">
       <div class="body" style="padding-bottom: 30px">
         <el-breadcrumb separator-class="el-icon-arrow-right">
@@ -22,11 +22,11 @@
             frameborder="0"
             width="100%"
             height="100%"
-          ></iframe>
+          />
         </div>
       </div>
     </div>
-    <foot-html />
+    <common-footer />
   </div>
 </template>
 <script>

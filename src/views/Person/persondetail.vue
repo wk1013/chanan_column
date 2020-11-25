@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <top-html type="common" />
+    <top type="common" />
     <div class="container-panel">
       <div class="body">
         <div class="header flex">
@@ -60,7 +60,6 @@
                 {{ seen ? "取消订阅" : "已订阅" }}
               </div>
             </div>
-
             <p class="font-s14 color6 linheight" style="margin: 10px 0">
               简介：{{ detail.introduce }}
             </p>
@@ -118,7 +117,7 @@
               >条结果
             </div>
           </div>
-          <knowlist :options="knowData"></knowlist>
+          <knowlist :options="knowData" v-if="!loading" />
           <el-pagination
             @current-change="handleCurrentChange"
             :current-page.sync="currentPage"
@@ -128,8 +127,7 @@
             background
             hide-on-single-page
             style="text-align: center; margin-top: 40px"
-          >
-          </el-pagination>
+          />
         </div>
         <edit-person
           :visible="editvisible"
@@ -137,8 +135,7 @@
           :editflag="true"
           @confirm="Editconfirm"
           @cancel="cancel"
-        >
-        </edit-person>
+        />
         <check-members
           ref="members"
           :firstLevelDeparts="firstLevelDeparts"
@@ -154,11 +151,10 @@
           @searchDepartByName="searchDepartByName"
           @getDepartMember="getDepartMember"
           @loadMoreMember="loadMoreMember"
-        >
-        </check-members>
+        />
       </div>
     </div>
-    <foot-html />
+    <common-footer />
   </div>
 </template>
 <script>
@@ -190,6 +186,7 @@ export default {
       isDisable: false,
       isHot: true,
       isUser: false,
+      loading: true,
     };
   },
   mixins: [selectMember],
@@ -239,6 +236,7 @@ export default {
         sysId: this.id,
       })
         .then((json) => {
+          this.loading = false;
           if (json.success) {
             this.knowData = json.content.contentList;
             this.total = json.content.total;
@@ -247,6 +245,7 @@ export default {
           }
         })
         .catch((json) => {
+          this.loading = false;
           this.$message.error(json.message);
         });
     },
