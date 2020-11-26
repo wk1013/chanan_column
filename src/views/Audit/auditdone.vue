@@ -1,12 +1,5 @@
 <template>
-  <el-dialog
-    class="detail-dialog"
-    :close-on-click-modal="false"
-    :visible="true"
-    width="900px"
-    :before-close="cancel"
-  >
-    <span slot="title" class="el-dialog__title">专栏审核</span>
+  <div class="detail-dialog">
     <div class="dialog-audit">
       <div class="audit-body">
         <div class="audit-item">
@@ -52,7 +45,7 @@
         </el-timeline>
       </div>
     </div>
-  </el-dialog>
+  </div>
 </template>
 <script>
 import { getMyInitiative, getMyHandled } from "@/api/interface/user";
@@ -71,7 +64,7 @@ export default {
     this.init();
   },
   methods: {
-    //获取待办详情
+    //获取待办事项详情
     init() {
       if (this.type == 0) {
         //我的发起
@@ -162,12 +155,6 @@ export default {
             this.$message.error(json.message);
           });
       }
-    },
-
-    //关闭弹框
-    cancel() {
-      var info = { status: "cancel" };
-      window.parent.postMessage(info, "*");
     },
   },
 };

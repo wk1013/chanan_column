@@ -1,12 +1,5 @@
 <template>
-  <el-dialog
-    class="detail-dialog"
-    :close-on-click-modal="false"
-    :visible="true"
-    width="900px"
-    :before-close="cancel"
-  >
-    <span slot="title" class="el-dialog__title">专栏审核</span>
+  <div class="detail-dialog">
     <div class="dialog-audit">
       <div class="audit-body">
         <div class="audit-item">
@@ -68,13 +61,13 @@
         </el-timeline>
       </div>
     </div>
-    <span slot="footer" class="dialog-footer">
+    <div class="dialog-footer">
       <el-button type="primary" @click="confirm" round :disabled="isDisable"
         >确 定
       </el-button>
       <el-button @click="cancel" round>取 消</el-button>
-    </span>
-  </el-dialog>
+    </div>
+  </div>
 </template>
 <script>
 import { formatList } from "@/utils/index";
@@ -95,6 +88,7 @@ export default {
     this.init();
   },
   methods: {
+    //获取我的待办详情
     init() {
       getMyToBeDone({
         sysId: this.id,
@@ -170,7 +164,7 @@ export default {
 
     //关闭弹框
     cancel() {
-      var info = { status: "cancel" };
+      var info = { status: "success" };
       window.parent.postMessage(info, "*");
     },
   },

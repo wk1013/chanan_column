@@ -1,22 +1,3 @@
-.el-dialog {
-  border-radius: 16px;
-  margin-top: 10vh !important;
-}
-
-.el-dialog__title {
-  font-size: 16px;
-  color: #333;
-}
-
-.el-dialog__header {
-  border-bottom: 1px solid #ddd;
-}
-
-.el-dialog__footer {
-  text-align: center;
-  padding: 10px 20px 30px;
-}
-
 .el-button--primary {
   background-color: #3d8cfc;
   border-color: #3d8cfc;
@@ -26,14 +7,19 @@
   margin-left: 30px;
 }
 
-.audit-body {
-  padding-right: 30px;
-  border-right: 1px solid #ddd;
+.detail-dialog {
+  padding: 30px;
 }
 
 .dialog-audit {
   display: flex;
   align-items: center;
+}
+
+.audit-body {
+  padding-right: 30px;
+  border-right: 1px solid #ddd;
+  width: 60%;
 }
 
 .audit-item {
@@ -49,17 +35,12 @@
 
 .audit-span {
   margin-right: 25px;
-  width: 70px;
+  width: 80px;
   text-align: right;
 }
 
 .audit-item p {
-  width: 450px;
   line-height: 26px;
-}
-
-.el-textarea {
-  width: 450px;
 }
 
 .avatar {
@@ -68,28 +49,9 @@
   border-radius: 6px;
 }
 
-.audit-file {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-}
-
-.audit-file:hover {
-  color: #367fff;
-}
-
-.audit-file span {
-  margin-left: 5px;
-}
-
-.icon-s {
-  width: 18px;
-  height: 22px;
-}
-
 .audit-list {
   padding-left: 30px;
-  width: 28%;
+  width: 40%;
 }
 
 .audit-list h1 {
@@ -109,7 +71,7 @@
 }
 
 .el-timeline {
-  height: 300px;
+  height: 320px;
 }
 
 .timeline-item div {
@@ -173,4 +135,11 @@
 
 .el-scrollbar__thumb {
   background: #ddd;
+}
+
+.dialog-footer {
+  margin-top: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
