@@ -70,8 +70,9 @@
           >
         </div>
       </div>
-      <div v-else class="font-s14 color3" style="padding: 16px">
-        暂无相关专栏知识
+      <div v-else class="nothing_l">
+        <img :src="imageUrl" />
+        <span>暂无数据</span>
       </div>
     </div>
   </div>
@@ -91,6 +92,7 @@ export default {
       seen: false,
       current: 0,
       isDisable: false,
+      imageUrl: require("../../assets/img/nothing_l.png"),
     };
   },
   props: {

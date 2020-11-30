@@ -14,14 +14,7 @@
             class="input-with-search"
             @keyup.13.native="search"
           >
-            <el-select
-              v-model="select"
-              disabled
-              slot="prepend"
-              placeholder="请选择"
-            >
-              <el-option label="知识" value="1" />
-            </el-select>
+            <span slot="prepend">知识</span>
             <el-button slot="append" type="primary" @click="search"
               >检索</el-button
             >
@@ -146,7 +139,6 @@ export default {
   data() {
     return {
       inputText: this.$route.query.inputText,
-      select: "1",
       currentPage: 1,
       total: 0,
       isSpecial: 0,

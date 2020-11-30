@@ -33,6 +33,10 @@
   margin-bottom: 0;
 }
 
+.el-textarea {
+  width: 85%;
+}
+
 .audit-span {
   margin-right: 25px;
   width: 80px;

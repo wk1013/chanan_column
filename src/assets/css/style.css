@@ -184,7 +184,8 @@ textarea {
   height: 32px !important;
   cursor: pointer;
   font-size: 22px;
-  color: #333;
+  color: #999;
+  margin-right: 10px;
 }
 
 .container-panel {
@@ -197,7 +198,7 @@ textarea {
 }
 
 .el-dialog__header {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #eee;
 }
 
 .el-dialog__footer {
@@ -241,6 +242,7 @@ textarea {
 
 .active {
   color: #3d8cfc;
+  font-weight: bold;
 }
 
 .input-with-select .el-input__inner {
@@ -299,6 +301,16 @@ textarea {
 
 .special-item:nth-child(3n + 3) {
   margin-right: 0;
+}
+
+.nothing_l {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 14px;
+  color: #333;
+  padding: 16px;
 }
 
 .usercolumn-item {
@@ -393,7 +405,7 @@ textarea {
   align-items: center;
   justify-content: space-between;
   padding: 16px 0;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #eee;
 }
 
 .special-span {
@@ -419,7 +431,7 @@ textarea {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #eee;
 }
 
 .person-img img {
@@ -499,7 +511,7 @@ textarea {
 }
 
 .avatar-uploader .el-upload {
-  border: 1px dashed #ddd;
+  border: 1px dashed #eee;
   border-radius: 6px;
   cursor: pointer;
   position: relative;
@@ -529,13 +541,26 @@ textarea {
   margin-bottom: 20px;
 }
 
-.el-breadcrumb__item {
+.el-breadcrumb__inner {
   font-size: 14px;
+  color: #666;
+}
+
+.el-breadcrumb__inner a:hover,
+.el-breadcrumb__inner.is-link {
+  color: #666;
+  font-weight: normal;
 }
 
 .el-breadcrumb__inner a:hover,
 .el-breadcrumb__inner.is-link:hover {
   color: #3d8cfc;
+}
+
+.el-breadcrumb__item:last-child .el-breadcrumb__inner,
+.el-breadcrumb__item:last-child .el-breadcrumb__inner:hover {
+  color: #333;
+  font-weight: bold;
 }
 
 .search {
@@ -561,7 +586,10 @@ textarea {
   border-top-left-radius: 32px;
   border-bottom-left-radius: 32px;
   color: #333;
+  width: 50px;
+  text-align: center;
 }
+
 .input-with-search .el-input-group__prepend .el-input__inner {
   width: 80px;
 }
@@ -658,7 +686,7 @@ textarea {
   align-items: center;
   justify-content: space-between;
   padding: 30px 0 20px 0;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #eee;
 }
 
 .bt-l .active {
@@ -668,7 +696,7 @@ textarea {
 
 .body-item {
   padding: 25px 0;
-  border-bottom: 1px dashed #ddd;
+  border-bottom: 1px dashed #eee;
 }
 
 .bi-title {
@@ -769,7 +797,7 @@ textarea {
 .kl-title {
   padding: 30px 0 0 0;
   justify-content: space-between;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #eee;
 }
 
 .kl-title h1 {

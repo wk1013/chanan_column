@@ -220,7 +220,7 @@ export default {
           .then((json) => {
             this.isDisable = false;
             if (json.success) {
-              this.$message.success("创建专栏成功");
+              this.$message.success("提交审核成功");
               this.personVisible = false;
               this.getClear(0);
               this.$emit("confirm", this.radio);
