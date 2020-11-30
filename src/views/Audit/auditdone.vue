@@ -90,7 +90,9 @@ export default {
                   text:
                     json.content.auditStatus == 0
                       ? "待审：管理员"
-                      : `已审：${json.content.reviewer} 审批意见：${json.content.opinions}`,
+                      : `已审：${json.content.reviewer} 审批结果：${
+                          json.content.auditStatus == 1 ? "同意" : "驳回"
+                        } 审批意见：${json.content.opinions}`,
                 });
                 if (
                   json.content.auditStatus == 1 ||
