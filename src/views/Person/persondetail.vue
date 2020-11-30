@@ -184,7 +184,7 @@ export default {
       editdetail: {},
       editvisible: false,
       isDisable: false,
-      isHot: true,
+      isHot: false,
       isUser: false,
       loading: true,
     };
@@ -301,7 +301,7 @@ export default {
 
     //搜索本专栏知识
     search() {
-      this.isHot = true;
+      this.isHot = false;
       this.currentPage = 1;
       this.getKnowledge();
     },

@@ -162,7 +162,7 @@ export default {
         },
       ],
       knowData: [],
-      isHot: true,
+      isHot: false,
       sysid: "",
       loading: true,
     };
@@ -180,7 +180,7 @@ export default {
         title: this.inputText,
         start: 1,
         length: 10,
-        order: "KRM_UPLOADTIME ASC",
+        order: "KRM_UPLOADTIME DESC",
         sysId: "",
       })
         .then((json) => {
@@ -271,6 +271,7 @@ export default {
         },
       ];
       this.loading = true;
+      this.isHot = false;
       this.init();
     },
 
@@ -322,7 +323,7 @@ export default {
 
     //单个专栏查询
     getColumn(id) {
-      this.isHot = true;
+      this.isHot = false;
       this.currentPage = 1;
       this.sysid = id;
       this.loading = true;

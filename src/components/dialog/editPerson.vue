@@ -81,6 +81,7 @@ export default {
   data() {
     return {
       title: "",
+      value: "",
       introduce: "",
       id: "",
       imgUrl: "",
@@ -95,6 +96,7 @@ export default {
     visible(val) {},
     options(val) {
       this.title = val.title;
+      this.value = val.title;
       this.introduce = val.introduce;
       this.id = val.sysId;
       this.dynamicTags = val.themeName ? val.themeName.split(",") : [];
@@ -174,17 +176,16 @@ export default {
         this.$message.warning("请输入专栏简介");
         return false;
       }
-      let params = {};
+      let params = {
+        columnType: 1,
+        sysId: this.id,
+        title: this.title == this.value ? "" : this.title,
+        introduce: this.introduce,
+        themeName: this.dynamicTags ? this.dynamicTags.toString() : "",
+        imgUrl: this.imgUrl,
+      };
       this.isDisable = true;
       if (this.editflag) {
-        params = {
-          columnType: 1,
-          sysId: this.id,
-          title: this.title,
-          introduce: this.introduce,
-          themeName: this.dynamicTags ? this.dynamicTags.toString() : "",
-          imgUrl: this.imgUrl,
-        };
         EditSpecialDetail(params)
           .then((json) => {
             this.isDisable = false;
@@ -200,14 +201,6 @@ export default {
             this.$message.error(json.message);
           });
       } else {
-        params = {
-          columnType: 1,
-          sysId: this.id,
-          title: this.title,
-          introduce: this.introduce,
-          themeName: this.dynamicTags ? this.dynamicTags.toString() : "",
-          imgUrl: this.imgUrl,
-        };
         EditColumn(params)
           .then((json) => {
             this.isDisable = false;

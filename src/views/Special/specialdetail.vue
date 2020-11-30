@@ -176,7 +176,7 @@ export default {
       editdetail: {},
       editvisible: false,
       isDisable: false,
-      isHot: true,
+      isHot: false,
       isUser: false,
       loading: true,
     };
@@ -293,7 +293,7 @@ export default {
 
     //搜索
     search() {
-      this.isHot = true;
+      this.isHot = false;
       this.currentPage = 1;
       this.getKnowledge();
     },
