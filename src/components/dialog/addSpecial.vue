@@ -25,9 +25,12 @@
         <span class="font-s14 color3">专栏简介：</span>
         <el-input
           type="textarea"
-          :rows="4"
+          :rows="6"
           v-model.trim="introduce"
           placeholder="请输入专栏简介"
+          resize="none"
+          maxlength="255"
+          show-word-limit
         />
       </div>
       <div class="dialog-item" v-show="personVisible">

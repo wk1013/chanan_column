@@ -172,6 +172,8 @@ export default {
   },
   components: {
     Knowlist,
+    Top: window.TopCommonFooter.Top,
+    CommonFooter: window.TopCommonFooter.CommonFooter,
   },
   methods: {
     //页面初始知识查询

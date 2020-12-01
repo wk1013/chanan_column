@@ -170,6 +170,24 @@ textarea {
   text-overflow: ellipsis;
 }
 
+.text-three {
+  word-break: break-all;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.text-two {
+  word-break: break-all;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
 /*icon图标*/
 
 .icon {
@@ -190,7 +208,7 @@ textarea {
 
 .container-panel {
   background-color: #f1f2f5;
-  min-height: calc(100vh - 171px);
+  min-height: calc(100vh - 115px);
 }
 
 .el-dialog {

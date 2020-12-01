@@ -166,7 +166,7 @@ export default {
 
     //关闭弹框
     cancel() {
-      var info = { status: "success" };
+      var info = { status: "cancel" };
       window.parent.postMessage(info, "*");
     },
   },

@@ -119,6 +119,10 @@ export default {
   created() {
     this.init();
   },
+  components: {
+    Top: window.TopCommonFooter.Top,
+    CommonFooter: window.TopCommonFooter.CommonFooter,
+  },
   methods: {
     handleDate: showDate,
 

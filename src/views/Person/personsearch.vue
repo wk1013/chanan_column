@@ -62,6 +62,8 @@ export default {
   },
   components: {
     Personlist,
+    Top: window.TopCommonFooter.Top,
+    CommonFooter: window.TopCommonFooter.CommonFooter,
   },
   methods: {
     //查询人物专栏

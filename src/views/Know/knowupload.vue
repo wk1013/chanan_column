@@ -46,6 +46,10 @@ export default {
   destroyed() {
     window.removeEventListener("message", this.getMessage, true);
   },
+  components: {
+    Top: window.TopCommonFooter.Top,
+    CommonFooter: window.TopCommonFooter.CommonFooter,
+  },
   methods: {
     //获取外部接口信息
     getUrl() {

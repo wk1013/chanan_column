@@ -62,6 +62,8 @@ export default {
   },
   components: {
     Speciallist,
+    Top: window.TopCommonFooter.Top,
+    CommonFooter: window.TopCommonFooter.CommonFooter,
   },
   methods: {
     //查询专栏列表

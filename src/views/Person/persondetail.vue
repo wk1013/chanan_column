@@ -60,7 +60,10 @@
                 {{ seen ? "取消订阅" : "已订阅" }}
               </div>
             </div>
-            <p class="font-s14 color6 linheight" style="margin: 10px 0">
+            <p
+              class="font-s14 color6 linheight text-two"
+              style="margin: 10px 0"
+            >
               简介：{{ detail.introduce }}
             </p>
             <p class="font-s14 color6" style="margin-bottom: 10px">
@@ -194,6 +197,8 @@ export default {
     Knowlist,
     EditPerson,
     CheckMembers,
+    Top: window.TopCommonFooter.Top,
+    CommonFooter: window.TopCommonFooter.CommonFooter,
   },
   created() {
     this.init();

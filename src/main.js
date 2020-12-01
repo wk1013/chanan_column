@@ -7,13 +7,9 @@ import 'element-ui/lib/theme-chalk/index.css';
 import './assets/css/style.css';
 import './assets/iconfont';
 
-import caTopAndFooter from "ca-top-and-footer";
-import 'ca-top-and-footer/dist/ca-top-and-footer.css';
-
 import Nothing from "@/components/dialog/nothing.vue";
 
 Vue.use(Element);
-Vue.use(caTopAndFooter);
 Vue.use(Nothing);
 
 Vue.component('nothing', Nothing);
@@ -24,7 +20,8 @@ new Vue({
   router,
   store,
   component: {
-    Nothing
+    Nothing,
+
   },
   render: h => h(App)
 }).$mount("#app");

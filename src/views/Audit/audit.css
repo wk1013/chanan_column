@@ -45,6 +45,13 @@
 
 .audit-item p {
   line-height: 26px;
+  width: 85%;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 
 .avatar {

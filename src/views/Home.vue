@@ -123,6 +123,8 @@ export default {
     AddSpecial,
     Speciallist,
     Personlist,
+    Top: window.TopCommonFooter.Top,
+    CommonFooter: window.TopCommonFooter.CommonFooter,
   },
   methods: {
     init() {
