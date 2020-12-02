@@ -75,35 +75,7 @@ export default {
             if (json.success) {
               this.options = json.content;
               if (json.content) {
-                let data = [];
-                data.push({
-                  title: "开始",
-                  active: true,
-                  date: json.content.startTime,
-                  text: `发起人：${json.content.sponsor}`,
-                });
-                data.push({
-                  title: "一审",
-                  active: json.content.auditStatus == 0 ? false : true,
-                  date:
-                    json.content.auditStatus == 0 ? "" : json.content.endTime,
-                  text:
-                    json.content.auditStatus == 0
-                      ? "待审：管理员"
-                      : `已审：${json.content.reviewer} 审批结果：${
-                          json.content.auditStatus == 1 ? "同意" : "驳回"
-                        } 审批意见：${json.content.opinions}`,
-                });
-                if (
-                  json.content.auditStatus == 1 ||
-                  json.content.auditStatus == 2
-                ) {
-                  data.push({
-                    over: true,
-                    active: true,
-                  });
-                }
-                this.activities = data;
+                this.activities = this.getData(json.content);
               }
             } else {
               this.$message.error(json.message);
@@ -121,33 +93,7 @@ export default {
             if (json.success) {
               this.options = json.content;
               if (json.content) {
-                let data = [];
-                data.push({
-                  title: "开始",
-                  active: true,
-                  date: json.content.startTime,
-                  text: `发起人：${json.content.sponsor}`,
-                });
-                data.push({
-                  title: "一审",
-                  active: json.content.auditStatus == 0 ? false : true,
-                  date:
-                    json.content.auditStatus == 0 ? "" : json.content.endTime,
-                  text:
-                    json.content.auditStatus == 0
-                      ? "待审：管理员"
-                      : `已审：${json.content.reviewer} 审批意见：${json.content.opinions}`,
-                });
-                if (
-                  json.content.auditStatus == 1 ||
-                  json.content.auditStatus == 2
-                ) {
-                  data.push({
-                    over: true,
-                    active: true,
-                  });
-                }
-                this.activities = data;
+                this.activities = this.getData(json.content);
               }
             } else {
               this.$message.error(json.message);
@@ -157,6 +103,35 @@ export default {
             this.$message.error(json.message);
           });
       }
+    },
+
+    //审批流程数据拼接
+    getData(json) {
+      let data = [];
+      data.push({
+        title: "开始",
+        active: true,
+        date: json.startTime,
+        text: `发起人：${json.sponsor}`,
+      });
+      data.push({
+        title: "一审",
+        active: json.auditStatus == 0 ? false : true,
+        date: json.auditStatus == 0 ? "" : json.endTime,
+        text:
+          json.auditStatus == 0
+            ? "待审：管理员"
+            : `已审：${json.reviewer}； 审批结果：${
+                json.auditStatus == 1 ? "同意" : "驳回"
+              }； 审批意见：${json.opinions}`,
+      });
+      if (json.auditStatus == 1 || json.auditStatus == 2) {
+        data.push({
+          over: true,
+          active: true,
+        });
+      }
+      return data;
     },
   },
 };

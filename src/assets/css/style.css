@@ -232,6 +232,26 @@ textarea {
   margin-left: 30px;
 }
 
+/* 分页样式 */
+.el-pagination.is-background .btn-next,
+.el-pagination.is-background .btn-prev,
+.el-pagination.is-background .el-pager li {
+  background-color: #fff;
+  color: #333;
+  border: 1px solid #eee;
+  font-weight: normal;
+}
+
+.el-pagination__jump {
+  color: #333;
+}
+
+.el-pagination.is-background .el-pager li:not(.disabled).active {
+  background-color: #fff;
+  color: #3d8cfc;
+  border: 1px solid #3d8cfc;
+}
+
 /* 首页样式 */
 .body {
   width: 1200px;
@@ -314,7 +334,7 @@ textarea {
 }
 
 .special-item:hover {
-  box-shadow: 0 0 13px rgba(0, 0, 0, 0.27);
+  box-shadow: 0 0 13px rgba(0, 0, 0, 0.2);
 }
 
 .special-item:nth-child(3n + 3) {

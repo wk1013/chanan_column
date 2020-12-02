@@ -1,6 +1,6 @@
 // 时间截取
 const showDate = (date) => {
-  return date && date.slice(0, 10);
+  return date && date.slice(0, 10).replace(/-/g, "/");
 }
 
 // 标题标红
