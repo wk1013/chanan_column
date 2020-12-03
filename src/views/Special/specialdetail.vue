@@ -98,7 +98,7 @@
             <div class="flex bt-l">
               <span class="font-s16 color3">排序方式：</span>
               <div class="active flex font-s16 color3" @click="getHot()">
-                <span>时间</span>
+                <span>发布时间</span>
                 <svg v-if="isHot" slot="suffix" aria-hidden="true" class="icon">
                   <use xlink:href="#iconup1" />
                 </svg>

@@ -36,7 +36,7 @@
       </div>
       <div style="padding: 20px 30px 30px 30px">
         <span class="font-s14 color3">擅长领域：{{ item.themeName }}</span>
-        <p class="font-s14 color6" style="margin: 16px 0">
+        <p class="font-s14 color6 text-two" style="margin: 16px 0">
           简介：{{ item.Introduce }}
         </p>
         <div class="person-r">
