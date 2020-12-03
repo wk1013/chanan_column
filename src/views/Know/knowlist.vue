@@ -52,7 +52,7 @@
                   <span
                     class="font-s14 color3 kt-title"
                     style="cursor: pointer"
-                    @click="getKnowDetail(scope.row.guid)"
+                    @click="getKnowDetail(scope.row.bdname, scope.row.guid)"
                     >{{ scope.row.title }}</span
                   >
                 </template>
@@ -103,7 +103,7 @@
 </template>
 <script>
 import { SearchKnowledge, DeleteKnow, DeleteNum } from "@/api/interface/home";
-import { showDate } from "@/utils/index.js";
+import { showDate, publiceUrl } from "@/utils/index.js";
 
 export default {
   data() {
@@ -132,7 +132,7 @@ export default {
         title: this.inputText,
         start: this.currentPage,
         length: 10,
-        order: "KRM_UPLOADTIME ASC",
+        order: "KRM_UPLOADTIME DESC",
         sysId: this.id,
       })
         .then((json) => {
@@ -199,8 +199,15 @@ export default {
     },
 
     //跳转知识页面
-    getKnowDetail(id) {
-      console.log("跳转知识页面");
+    getKnowDetail(tableName, knowledgeId) {
+      window.open(
+        publiceUrl +
+          "krd/home/index#/knowledgeDetail?dbCode=COLUMN" +
+          "&tableName=" +
+          tableName +
+          "&knowledgeId=" +
+          knowledgeId
+      );
     },
   },
 };

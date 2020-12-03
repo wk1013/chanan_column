@@ -64,7 +64,7 @@
           <span
             class="text-ellipsis font-s14 color3"
             style="cursor: pointer"
-            @click="getSpecialItem(i.listId)"
+            @click="getSpecialItem(i.bdname, i.listId)"
             @click.stop
             >{{ i.name }}</span
           >
@@ -84,7 +84,7 @@ import {
   DeleteSubscribe,
   getSpecialDetail,
 } from "@/api/interface/home";
-import { showDate, showData } from "@/utils/index.js";
+import { showDate, showData, publiceUrl } from "@/utils/index.js";
 
 export default {
   data() {
@@ -194,8 +194,15 @@ export default {
     },
 
     //跳转主题专栏中的单个知识
-    getSpecialItem(id) {
-      console.log("跳转知识页面");
+    getSpecialItem(tableName, knowledgeId) {
+      window.open(
+        publiceUrl +
+          "krd/home/index#/knowledgeDetail?dbCode=COLUMN" +
+          "&tableName=" +
+          tableName +
+          "&knowledgeId=" +
+          knowledgeId
+      );
     },
   },
 };

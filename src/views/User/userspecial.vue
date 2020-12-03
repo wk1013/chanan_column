@@ -58,6 +58,7 @@
 import { getUserSpecial } from "@/api/interface/user";
 import Speciallist from "@/components/user/speciallist.vue";
 import Personlist from "@/components/user/personlist.vue";
+import { publiceUrl } from "@/utils/index.js";
 
 export default {
   data() {
@@ -115,7 +116,7 @@ export default {
 
     //跳转专栏广场
     getNewspecial() {
-      window.open("http://47.92.202.73/column");
+      window.open(publiceUrl + "column");
     },
   },
 };

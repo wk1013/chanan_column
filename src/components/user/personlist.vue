@@ -62,7 +62,7 @@
 </template>
 <script>
 import { DeleteSubscribe, getSpecialDetail } from "@/api/interface/home";
-import { showDate } from "@/utils/index.js";
+import { showDate, publiceUrl } from "@/utils/index.js";
 
 export default {
   data() {
@@ -113,7 +113,7 @@ export default {
       })
         .then((json) => {
           if (json.success) {
-            window.open("http://47.92.202.73/column/#/personDetail?id=" + id);
+            window.open(publiceUrl + "column/#/personDetail?id=" + id);
           } else {
             this.$message.warning("您不在该专栏的权限范围内");
           }

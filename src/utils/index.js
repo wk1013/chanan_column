@@ -34,8 +34,12 @@ const formatList = {
   video: ['avi', 'mov', 'swf', 'flv', 'mp4', 'mpg', 'mpeg', 'rm', 'rmvb'],
 };
 
+//线上公共域名地址
+const publiceUrl = "http://47.92.202.73/";
+
 export {
   showDate,
   showData,
-  formatList
+  formatList,
+  publiceUrl
 }

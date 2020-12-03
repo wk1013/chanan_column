@@ -31,6 +31,7 @@
 </template>
 <script>
 import { AddNum } from "@/api/interface/home";
+import { publiceUrl } from "@/utils/index.js";
 
 export default {
   data() {
@@ -56,7 +57,8 @@ export default {
       let id = this.id;
       let type = this.type;
       var url =
-        "http://47.92.202.73/skdm/#/knowledge/column/upload?columnId=" +
+        publiceUrl +
+        "skdm/#/knowledge/column/upload?columnId=" +
         id +
         "&columnType=" +
         type;

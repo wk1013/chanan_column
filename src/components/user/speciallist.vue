@@ -49,14 +49,15 @@
           <span
             class="text-ellipsis font-s14 color3"
             style="cursor: pointer"
-            @click="getSpecialItem(i.listId)"
+            @click="getSpecialItem(i.bdname, i.listId)"
             @click.stop
             >{{ i.name }}</span
           >
         </div>
       </div>
-      <div v-else class="font-s14 color3" style="padding: 16px">
-        暂无相关专栏知识
+      <div v-else class="nothing_l">
+        <img :src="imageUrl" />
+        <span>暂无数据</span>
       </div>
     </div>
   </div>
@@ -64,12 +65,13 @@
 </template>
 <script>
 import { DeleteSubscribe, getSpecialDetail } from "@/api/interface/home";
-import { showDate } from "@/utils/index.js";
+import { showDate, publiceUrl } from "@/utils/index.js";
 
 export default {
   data() {
     return {
       isDisable: false,
+      imageUrl: require("../../assets/img/nothing_l.png"),
     };
   },
   props: {
@@ -90,7 +92,7 @@ export default {
       })
         .then((json) => {
           if (json.success) {
-            window.open("http://47.92.202.73/column/#/specialDetail?id=" + id);
+            window.open(publiceUrl + "column/#/specialDetail?id=" + id);
           } else {
             this.$message.warning("您不在该专栏的权限范围内");
           }
@@ -126,8 +128,15 @@ export default {
     },
 
     //跳转主题专栏中的单个知识
-    getSpecialItem(id) {
-      console.log("跳转知识页面");
+    getSpecialItem(tableName, knowledgeId) {
+      window.open(
+        publiceUrl +
+          "krd/home/index#/knowledgeDetail?dbCode=COLUMN" +
+          "&tableName=" +
+          tableName +
+          "&knowledgeId=" +
+          knowledgeId
+      );
     },
   },
 };
