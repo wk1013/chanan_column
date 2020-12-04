@@ -19,42 +19,66 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: Home
+    component: Home,
+    meta: {
+      title: "专栏广场"
+    }
   },
   {
     path: '/specialSearch',
     name: 'specialSearch',
-    component: SpecialSearch
+    component: SpecialSearch,
+    meta: {
+      title: "主题专栏检索"
+    }
   },
   {
     path: '/personSearch',
     name: 'personSearch',
-    component: PersonSearch
+    component: PersonSearch,
+    meta: {
+      title: "人物专栏检索"
+    }
   },
   {
     path: '/knowledgeSearch',
     name: 'knowledgeSearch',
-    component: Know
+    component: Know,
+    meta: {
+      title: "专栏知识检索"
+    }
   },
   {
     path: '/specialDetail',
     name: 'specialDetail',
-    component: SpecialDetail
+    component: SpecialDetail,
+    meta: {
+      title: "专栏详情"
+    }
   },
   {
     path: '/personDetail',
     name: 'personDetail',
-    component: PersonDetail
+    component: PersonDetail,
+    meta: {
+      title: "专栏详情"
+    }
   },
   {
     path: '/knowledgeList',
     name: 'knowledgeList',
-    component: KnowList
+    component: KnowList,
+    meta: {
+      title: "专栏文档管理"
+    }
   },
   {
     path: '/knowledgeupload',
     name: 'knowledgeupload',
-    component: KnowUpload
+    component: KnowUpload,
+    meta: {
+      title: "专栏知识上传"
+    }
   },
   {
     path: '/backstage/column',
