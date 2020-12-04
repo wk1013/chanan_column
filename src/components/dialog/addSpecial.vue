@@ -33,35 +33,42 @@
           show-word-limit
         />
       </div>
-      <div class="dialog-item" v-show="personVisible">
+      <div
+        class="dialog-item"
+        v-show="personVisible"
+        style="align-items: flex-start"
+      >
         <span class="font-s14 color3">擅长领域：</span>
-        <el-input
-          class="input-new-tag"
-          v-if="inputVisible"
-          v-model="inputValue"
-          ref="saveTagInput"
-          size="small"
-          @keyup.enter.native="handleInputConfirm"
-          @blur="handleInputConfirm"
-        />
-        <el-button
-          v-else
-          class="button-new-tag"
-          size="small"
-          @click="showInput"
-          style="margin-right: 10px"
-          >添加新领域</el-button
-        >
-        <el-tag
-          :key="tag"
-          v-for="tag in dynamicTags"
-          closable
-          :disable-transitions="false"
-          @close="handleClose(tag)"
-          effect="plain"
-        >
-          {{ tag }}
-        </el-tag>
+        <div>
+          <el-input
+            class="input-new-tag"
+            v-if="inputVisible"
+            v-model="inputValue"
+            ref="saveTagInput"
+            size="small"
+            @keyup.enter.native="handleInputConfirm"
+            @blur="handleInputConfirm"
+          />
+          <el-button
+            v-else
+            class="button-new-tag"
+            size="small"
+            @click="showInput"
+            >添加新领域</el-button
+          >
+          <div class="tag">
+            <el-tag
+              :key="tag"
+              v-for="tag in dynamicTags"
+              closable
+              :disable-transitions="false"
+              @close="handleClose(tag)"
+              effect="plain"
+            >
+              {{ tag }}
+            </el-tag>
+          </div>
+        </div>
       </div>
       <div class="dialog-item" style="align-items: flex-start">
         <span class="font-s14 color3">上传封面：</span>
