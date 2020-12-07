@@ -3,8 +3,8 @@
     ref="singleTable"
     :data="tableData"
     :header-cell-style="headerStyle"
-    :row-class-name="rowClassName"
     :row-style="rowStyle"
+    stripe
   >
     <el-table-column label="序号" align="center" width="100">
       <template slot-scope="scope">
@@ -96,11 +96,10 @@ export default {
         background: "#498be3",
         fontSize: "16px",
         color: "#ffffff",
-        fontWeight: "500",
+        fontWeight: "700",
       },
       rowStyle: {
         height: "44px",
-        fontFamily: "MicrosoftYaHeiUI",
         fontSize: "14px",
         color: "#323232",
         backgroundColor: "",
@@ -122,13 +121,6 @@ export default {
   },
   methods: {
     handleDate: showDate,
-
-    rowClassName({ row, rowIndex }) {
-      if ((rowIndex + 1) % 2 === 0) {
-        return "odd-row";
-      }
-      return "";
-    },
 
     //置顶,标记大V
     handleTSV(data, flag) {
@@ -232,15 +224,14 @@ export default {
   },
 };
 </script>
-<style scoped>
-.el-table .odd-row {
+<style >
+.el-table--striped .el-table__body tr.el-table__row--striped td {
   background-color: #f5f5f5;
-}
-.icon6 {
-  color: #367fff;
-  cursor: pointer;
 }
 .el-button--text {
   color: #236deb;
+  font-family: Arial, "\5FAE\8F6F\96C5\9ED1";
+  margin-left: 0 !important;
+  width: 50px;
 }
 </style>
