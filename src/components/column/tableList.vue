@@ -99,7 +99,6 @@ export default {
         fontWeight: "700",
       },
       rowStyle: {
-        height: "44px",
         fontSize: "14px",
         color: "#323232",
         backgroundColor: "",
@@ -233,5 +232,6 @@ export default {
   font-family: Arial, "\5FAE\8F6F\96C5\9ED1";
   margin-left: 0 !important;
   width: 50px;
+  padding: 0;
 }
 </style>

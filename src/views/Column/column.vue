@@ -71,7 +71,7 @@
       :total="total"
       hide-on-single-page
       background
-      style="text-align: center; margin-top: 50px"
+      style="text-align: center; margin-top: 50px; margin-bottom: 30px"
     />
     <add-special
       :visible="visible"

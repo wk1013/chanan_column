@@ -354,19 +354,20 @@ textarea {
 .usercolumn-item {
   background-color: #fff;
   border-radius: 8px;
-  width: 377px;
+  width: calc(25% - 24.5px);
   margin-bottom: 30px;
   margin-right: 30px;
   transition: all 0.3s;
   cursor: pointer;
   position: relative;
+  border: 1px solid #ddd;
 }
 
 .usercolumn-item:hover {
   box-shadow: 0 0 13px rgba(0, 0, 0, 0.27);
 }
 
-.usercolumn-item:nth-child(3n + 3) {
+.usercolumn-item:nth-child(4n + 4) {
   margin-right: 0;
 }
 

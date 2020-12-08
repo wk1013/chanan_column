@@ -50,7 +50,7 @@
       :total="total"
       hide-on-single-page
       background
-      style="text-align: center"
+      style="text-align: center; margin: 30px 0"
     />
   </div>
 </template>
@@ -124,9 +124,6 @@ export default {
 <style scoped>
 .usercolumn {
   background-color: #fff;
-  padding: 30px;
-  border-radius: 8px;
-  width: 1600px;
-  margin: 0 auto;
+  width: 100%;
 }
 </style>
