@@ -92,7 +92,7 @@ export default {
       })
         .then((json) => {
           if (json.success) {
-            window.open(publiceUrl + "column/#/specialDetail?id=" + id);
+            window.open(publiceUrl + "/column/#/specialDetail?id=" + id);
           } else {
             this.$message.warning("您不在该专栏的权限范围内");
           }
@@ -131,7 +131,7 @@ export default {
     getSpecialItem(tableName, knowledgeId) {
       window.open(
         publiceUrl +
-          "krd/home/index#/knowledgeDetail?dbCode=COLUMN" +
+          "/krd/home/index#/knowledgeDetail?dbCode=COLUMN" +
           "&tableName=" +
           tableName +
           "&knowledgeId=" +

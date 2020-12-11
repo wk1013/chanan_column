@@ -197,7 +197,7 @@ export default {
     getSpecialItem(tableName, knowledgeId) {
       window.open(
         publiceUrl +
-          "krd/home/index#/knowledgeDetail?dbCode=COLUMN" +
+          "/krd/home/index#/knowledgeDetail?dbCode=COLUMN" +
           "&tableName=" +
           tableName +
           "&knowledgeId=" +

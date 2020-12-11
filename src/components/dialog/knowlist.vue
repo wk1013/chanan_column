@@ -47,7 +47,7 @@ export default {
     getKnow(tableName, knowledgeId) {
       window.open(
         publiceUrl +
-          "krd/home/index#/knowledgeDetail?dbCode=COLUMN" +
+          "/krd/home/index#/knowledgeDetail?dbCode=COLUMN" +
           "&tableName=" +
           tableName +
           "&knowledgeId=" +

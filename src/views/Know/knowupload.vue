@@ -58,7 +58,7 @@ export default {
       let type = this.type;
       var url =
         publiceUrl +
-        "skdm/#/knowledge/column/upload?columnId=" +
+        "/skdm/#/knowledge/column/upload?columnId=" +
         id +
         "&columnType=" +
         type;

@@ -116,7 +116,7 @@ export default {
 
     //跳转专栏广场
     getNewspecial() {
-      window.open(publiceUrl + "column");
+      window.open(publiceUrl + "/column");
     },
   },
 };
