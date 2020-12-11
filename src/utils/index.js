@@ -36,6 +36,7 @@ const formatList = {
 
 //线上公共域名地址
 const publiceUrl = "http://47.92.202.73/";
+// const publiceUrl = "http://10.70.149.28/";
 
 export {
   showDate,
