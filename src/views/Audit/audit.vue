@@ -78,7 +78,7 @@ export default {
     return {
       id: this.$route.query.sysId,
       isDisable: false,
-      radio: 1,
+      radio: "",
       opinion: "",
       options: {},
       activities: [],
@@ -140,27 +140,32 @@ export default {
       if (this.isDisable) {
         return false;
       } else {
-        this.isDisable = true;
-        let params = {
-          auditStatus: this.radio,
-          sysId: this.id,
-          opinions: this.opinion,
-        };
-        getMyAudit(params)
-          .then((json) => {
-            this.isDisable = false;
-            if (json.success) {
-              this.$message.success(json.message);
-              var info = { status: "success" };
-              window.parent.postMessage(info, "*");
-            } else {
+        if (this.radio == "") {
+          this.$message.warning("请选择您的审批结果");
+          return false;
+        } else {
+          this.isDisable = true;
+          let params = {
+            auditStatus: this.radio,
+            sysId: this.id,
+            opinions: this.opinion,
+          };
+          getMyAudit(params)
+            .then((json) => {
+              this.isDisable = false;
+              if (json.success) {
+                this.$message.success(json.message);
+                var info = { status: "success" };
+                window.parent.postMessage(info, "*");
+              } else {
+                this.$message.error(json.message);
+              }
+            })
+            .catch((json) => {
+              this.isDisable = false;
               this.$message.error(json.message);
-            }
-          })
-          .catch((json) => {
-            this.isDisable = false;
-            this.$message.error(json.message);
-          });
+            });
+        }
       }
     },
 
