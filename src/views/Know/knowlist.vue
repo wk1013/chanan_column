@@ -53,8 +53,8 @@
                     class="font-s14 color3 kt-title"
                     style="cursor: pointer"
                     @click="getKnowDetail(scope.row.bdname, scope.row.guid)"
-                    >{{ scope.row.title }}</span
-                  >
+                    v-html="showData(scope.row.title)"
+                  />
                 </template>
               </el-table-column>
               <el-table-column label="上传人" width="200" align="center">
@@ -103,7 +103,7 @@
 </template>
 <script>
 import { SearchKnowledge, DeleteKnow, DeleteNum } from "@/api/interface/home";
-import { showDate, publiceUrl } from "@/utils/index.js";
+import { showDate, publiceUrl, showData } from "@/utils/index.js";
 
 export default {
   data() {
@@ -125,6 +125,13 @@ export default {
   },
   methods: {
     handleDate: showDate,
+
+    //检索词标红
+    showData(text) {
+      return text
+        .replace(/###/g, '<span style="color:red">')
+        .replace(/\$\$\$/g, "</span>");
+    },
 
     //查询专栏知识
     init() {
