@@ -21,9 +21,12 @@
           {{ item.title }}
         </h1>
         <div class="person-span">
-          <span class="font-s16 color3" style="margin-right: 30px">{{
-            item.CreateUserDepart
-          }}</span>
+          <span
+            class="font-s16 color3 text-ellipsis"
+            style="width: 75%"
+            :title="item.CreateUserDepart"
+            >{{ item.CreateUserDepart }}</span
+          >
           <div
             class="ifsub"
             v-if="item.isSub"

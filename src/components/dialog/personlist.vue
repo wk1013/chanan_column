@@ -24,9 +24,12 @@
           v-html="handleTitle(inputKey, item.title)"
         />
         <div class="person-span">
-          <span class="font-s16 color3 text-ellipsis" style="width: 75%">{{
-            item.CreateUserDepart
-          }}</span>
+          <span
+            class="font-s16 color3 text-ellipsis"
+            style="width: 75%"
+            :title="item.CreateUserDepart"
+            >{{ item.CreateUserDepart }}</span
+          >
           <div
             v-if="!item.isSub"
             class="subscribe"
