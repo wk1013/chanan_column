@@ -168,6 +168,7 @@ import {
   SearchKnowledge,
   DeleteColumn,
 } from "@/api/interface/home";
+import { getUserInfo } from "@/api/interface/user";
 import Knowlist from "@/components/dialog/knowlist.vue";
 import EditPerson from "@/components/dialog/editPerson.vue";
 import CheckMembers from "@/utils/check-members.min.js";
@@ -201,11 +202,27 @@ export default {
     CommonFooter: window.TopCommonFooter.CommonFooter,
   },
   created() {
-    this.init();
-    this.getKnowledge();
+    this.getUser();
   },
   methods: {
     handleDate: showDate,
+
+    //初始先查询用户信息
+    getUser() {
+      getUserInfo({})
+        .then((json) => {
+          if (json.success) {
+            const data = json.content;
+            sessionStorage.setItem("UserInfo", JSON.stringify(data));
+            this.init();
+          } else {
+            this.$message.error(json.message);
+          }
+        })
+        .catch((json) => {
+          this.$message.error(json.message);
+        });
+    },
 
     //查询专栏详情
     init() {
@@ -222,6 +239,7 @@ export default {
             if (createUserName == username) {
               this.isUser = true;
             }
+            this.getKnowledge();
           } else {
             this.$message.error(json.message);
           }

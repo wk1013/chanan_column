@@ -24,7 +24,7 @@
           v-html="handleTitle(inputKey, item.title)"
         />
         <div class="person-span">
-          <span class="font-s16 color3" style="margin-right: 30px">{{
+          <span class="font-s16 color3 text-ellipsis" style="width: 75%">{{
             item.CreateUserDepart
           }}</span>
           <div
